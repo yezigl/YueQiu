@@ -6,6 +6,7 @@ package com.yueqiua;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import butterknife.ButterKnife;
 
@@ -18,6 +19,8 @@ import butterknife.ButterKnife;
  */
 public class BaseActivity extends AppCompatActivity {
 
+    protected final String TAG = getClass().getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +30,11 @@ public class BaseActivity extends AppCompatActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.inject(this);
+    }
+
+    @Override
+    protected void onTitleChanged(CharSequence title, int color) {
+        super.onTitleChanged(title, color);
+        Log.d(TAG, title + " " + color);
     }
 }

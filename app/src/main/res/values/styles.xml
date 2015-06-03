@@ -9,6 +9,87 @@
         <item name="colorPrimaryDark">@color/theme_primaryDark</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/theme_primary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Divider"></style>
+
+    <!-- 水平分割线 实线 -->
+    <style name="Divider.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/bg_divider</item>
+    </style>
+
+    <!-- 垂直分割线 实线 -->
+    <style name="Divider.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/bg_divider</item>
+    </style>
+
+    <!-- ListView样式，带分割线 -->
+    <style name="List">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:divider">@color/bg_divider</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:fadingEdgeLength">0dp</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:headerDividersEnabled">true</item>
+        <item name="android:footerDividersEnabled">true</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Button.Large" parent="Button">
+        <item name="android:background">@drawable/button_large_blue</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/button_large_textSize</item>
+    </style>
+
+    <!-- 大按钮蓝色，默认match_parent/44dp -->
+    <style name="Button.Large.Blue">
+        <item name="android:background">@drawable/button_large_blue</item>
+    </style>
+
+    <!-- 大按钮橘色，默认match_parent/44dp -->
+    <style name="Button.Large.Orange">
+        <item name="android:background">@drawable/button_large_orange</item>
+    </style>
+
+    <!-- 大按钮灰色，默认match_parent/44dp -->
+    <style name="Button.Large.Gray">
+        <item name="android:background">@drawable/button_large_gray</item>
+        <item name="android:textColor">@color/button_large_gray_text</item>
+    </style>
+
+    <style name="Button.Small">
+        <item name="android:textSize">@dimen/button_small_textSize</item>
+    </style>
+
+    <!-- 小按钮蓝色，默认wrap_content/30dp -->
+    <style name="Button.Small.Blue">
+        <item name="android:background">@drawable/button_small_blue</item>
+        <item name="android:textColor">@color/button_small_blue_text</item>
+    </style>
+
+    <!-- 小按钮蓝色，默认wrap_content/30dp -->
+    <style name="Button.Small.Orange">
+        <item name="android:background">@drawable/button_small_orange</item>
+        <item name="android:textColor">@color/button_small_orange_text</item>
     </style>
 
 </resources>

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:elevation="10dp"
+        android:elevation="8dp"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -18,8 +18,49 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name" />
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/text_white"
+            android:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottomtab_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/bg_index_tab"
+        android:orientation="horizontal">
+
+        <com.yueqiua.widget.BottomTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/m_tab_workbench"
+            android:text="约球" />
+
+        <com.yueqiua.widget.BottomTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/m_tab_workbench"
+            android:text="活动" />
+
+        <com.yueqiua.widget.BottomTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/m_tab_workbench"
+            android:text="我的" />
+    </LinearLayout>
+
 
 </RelativeLayout>
