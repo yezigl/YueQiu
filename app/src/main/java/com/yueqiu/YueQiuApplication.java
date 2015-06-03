@@ -7,7 +7,7 @@ package com.yueqiu;
 import android.app.Application;
 
 import com.umeng.analytics.AnalyticsConfig;
-import com.yueqiu.widget.utils.ChannelReader;
+import com.yueqiu.utils.ChannelReader;
 
 /**
  * TODO 在这里编写类的功能描述

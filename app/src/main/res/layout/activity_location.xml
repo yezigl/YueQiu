@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="8dp"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/text_white"
+            android:textSize="18sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_gps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_base"
+            android:layout_marginLeft="@dimen/space_horizontal"
+            android:text="@string/location_gps"
+            android:textColor="@color/text_darker"
+            android:textSize="14sp" />
+
+        <View style="@style/Divider.Horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/bg_white"
+            android:paddingLeft="@dimen/space_horizontal">
+
+            <TextView
+                android:id="@+id/location_gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/location_ing"
+                android:textColor="@color/text_darker"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <View style="@style/Divider.Horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_servcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_base"
+            android:layout_marginLeft="@dimen/space_horizontal"
+            android:text="@string/location_servcity"
+            android:textColor="@color/text_darker"
+            android:textSize="14sp" />
+
+        <View style="@style/Divider.Horizontal" />
+
+        <ListView
+            android:id="@+id/list"
+            style="@style/List" />
+
+        <View style="@style/Divider.Horizontal" />
+
+    </LinearLayout>
+
+</LinearLayout>

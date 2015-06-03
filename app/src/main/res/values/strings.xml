@@ -3,6 +3,13 @@
     <string name="app_name">约球啊</string>
     <string name="channel">default</string>
 
+    <string name="location_title">选择城市</string>
+    <string name="location_tbd">%s{fa-angle-down}</string>
+    <string name="location_gps">GPS定位城市</string>
+    <string name="location_ing">{fa-spinner}</string>
+    <string name="location_servcity">已开通服务城市</string>
+    <string name="location_checked">{fa-check}</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_test">TestActivity</string>

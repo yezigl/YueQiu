@@ -1,4 +1,4 @@
-package com.yueqiu.widget.utils;
+package com.yueqiu.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;

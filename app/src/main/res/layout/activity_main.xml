@@ -5,26 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="8dp"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@color/text_white"
-            android:textSize="18sp" />
-
-    </android.support.v7.widget.Toolbar>
-
     <FrameLayout
         android:id="@id/content"
         android:layout_width="match_parent"
@@ -41,6 +21,7 @@
         android:orientation="horizontal">
 
         <com.yueqiu.widget.BottomTabView
+            android:id="@+id/tab1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -48,6 +29,7 @@
             android:text="约球" />
 
         <com.yueqiu.widget.BottomTabView
+            android:id="@+id/tab2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -55,6 +37,7 @@
             android:text="活动" />
 
         <com.yueqiu.widget.BottomTabView
+            android:id="@+id/tab3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

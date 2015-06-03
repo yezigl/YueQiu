@@ -1,11 +1,24 @@
 package com.yueqiu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+
+import com.yueqiu.index.LocationActivity;
+import com.yueqiu.widget.BottomTabView;
+
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
+    @InjectView(R.id.tab1)
+    BottomTabView mTab1;
+    @InjectView(R.id.tab2)
+    BottomTabView mTab2;
+    @InjectView(R.id.tab3)
+    BottomTabView mTab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,25 +29,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3})
+    public void tabClick(View v) {
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivityForResult(intent, 0);
     }
 }

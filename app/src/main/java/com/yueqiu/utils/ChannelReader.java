@@ -2,7 +2,7 @@
  * Copyright (c) 2010-2014 meituan.com
  * All rights reserved.
  */
-package com.yueqiu.widget.utils;
+package com.yueqiu.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
