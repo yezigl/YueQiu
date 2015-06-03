@@ -2,7 +2,7 @@
  * Copyright (c) 2010-2015 meituan.com
  * All rights reserved.
  */
-package com.yueqiua;
+package com.yueqiu;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

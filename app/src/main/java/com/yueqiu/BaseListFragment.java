@@ -2,7 +2,7 @@
  * Copyright (c) 2010-2015 meituan.com
  * All rights reserved.
  */
-package com.yueqiua;
+package com.yueqiu;
 
 import android.content.AsyncTaskLoader;
 import android.os.Bundle;

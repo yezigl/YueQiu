@@ -1,4 +1,4 @@
-package com.yueqiua;
+package com.yueqiu;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.yueqiua.widget;
+package com.yueqiu.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.yueqiua.R;
+import com.yueqiu.R;
 
 public class BottomTabView extends FrameLayout {
 

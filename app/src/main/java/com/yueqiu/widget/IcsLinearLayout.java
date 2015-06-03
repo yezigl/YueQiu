@@ -1,4 +1,4 @@
-package com.yueqiua.widget;
+package com.yueqiu.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

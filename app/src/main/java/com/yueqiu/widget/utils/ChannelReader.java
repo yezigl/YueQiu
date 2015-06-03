@@ -2,12 +2,12 @@
  * Copyright (c) 2010-2014 meituan.com
  * All rights reserved.
  */
-package com.yueqiua.widget.utils;
+package com.yueqiu.widget.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 
-import com.yueqiua.R;
+import com.yueqiu.R;
 
 import java.io.IOException;
 import java.util.Enumeration;

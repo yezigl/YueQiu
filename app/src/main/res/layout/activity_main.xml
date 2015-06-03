@@ -40,21 +40,21 @@
         android:background="@drawable/bg_index_tab"
         android:orientation="horizontal">
 
-        <com.yueqiua.widget.BottomTabView
+        <com.yueqiu.widget.BottomTabView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/m_tab_workbench"
             android:text="约球" />
 
-        <com.yueqiua.widget.BottomTabView
+        <com.yueqiu.widget.BottomTabView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/m_tab_workbench"
             android:text="活动" />
 
-        <com.yueqiua.widget.BottomTabView
+        <com.yueqiu.widget.BottomTabView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
