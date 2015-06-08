@@ -1,6 +1,7 @@
 package com.yueqiu.widget;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 

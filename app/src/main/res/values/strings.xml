@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">约球啊</string>
+    <string name="app_name">约个球</string>
     <string name="channel">default</string>
 
     <string name="location_title">选择城市</string>
