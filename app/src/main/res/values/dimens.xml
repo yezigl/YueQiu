@@ -2,7 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="padding_primary">15dp</dimen>
+    <dimen name="padding_base">8dp</dimen>
+    <dimen name="padding_primary">16dp</dimen>
+    <dimen name="vertical_48dp">48dp</dimen>
+    <dimen name="vertical_56dp">56dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="space_horizontal_icon">72dp</dimen>
+
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
 
     <!-- Button -->
     <dimen name="button_large_height">44dp</dimen>
@@ -12,6 +20,25 @@
     <dimen name="button_small_padding">10dp</dimen>
     <dimen name="button_small_textSize">13sp</dimen>
     <dimen name="button_square_height">44dp</dimen>
+    <dimen name="mtsetting_height">56dp</dimen>
+    <dimen name="mtsetting_icon_size">24dp</dimen>
+    <dimen name="mtsetting_icon_marginRight">16dp</dimen>
+    <dimen name="mtsetting_title_textSize">16sp</dimen>
+    <dimen name="mtsetting_desc_textSize">14sp</dimen>
+    <dimen name="dropdown_height">48dp</dimen>
+    <dimen name="dropdown_paddingLeft">38dp</dimen>
+    <dimen name="dropdown_paddingRight">29dp</dimen>
+    <dimen name="dropdown_paddingCascade">25dp</dimen>
+    <dimen name="dropdown_textSize">15sp</dimen>
+    <dimen name="dropdown_title_textSize">14sp</dimen>
+    <dimen name="dropdown_cascade_parent_width">140dp</dimen>
+    <dimen name="mtformedittext_height">49dp</dimen>
+    <dimen name="mtformedittext_label_width">83dp</dimen>
+    <dimen name="mtformedittext_label_textSize">16sp</dimen>
+    <dimen name="mtformedittext_input_textSize">16sp</dimen>
+    <dimen name="mtformedittext_input_hint_textSize">14sp</dimen>
+    <dimen name="edittext_delete_icon_width">46dp</dimen>
+    <dimen name="edittext_delete_icon_height">40dp</dimen>
 
     <!-- 底部tab -->
     <dimen name="bottomtab_height">56dp</dimen>
@@ -22,14 +49,12 @@
 
     <!-- 顶部titlebar -->
     <dimen name="titlebar_height">48dp</dimen>
-    <dimen name="titlebar_title_textSize">17sp</dimen>
+    <dimen name="titlebar_title_textSize">18sp</dimen>
     <dimen name="titlebar_title_margin">65dp</dimen>
     <dimen name="titlebar_func_paddingTop">12dp</dimen>
     <dimen name="titlebar_func_textSize">15sp</dimen>
 
-    <dimen name="space_horizontal">16dp</dimen>
-    <dimen name="space_vertical">16dp</dimen>
-    <dimen name="space_base">8dp</dimen>
-
-    <dimen name="space_horizontal_icon">72dp</dimen>
+    <dimen name="register_mobile_button_width">120dp</dimen>
+    <dimen name="register_mobile_button_height">40dp</dimen>
+    <dimen name="register_mobile_button_textSize">16sp</dimen>
 </resources>

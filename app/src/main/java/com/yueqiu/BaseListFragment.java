@@ -9,13 +9,13 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import com.yueqiu.utils.Logger;
 import com.yueqiu.widget.BaseArrayAdapter;
 import com.yueqiu.widget.BaseAsyncTaskLoader;
 
@@ -40,7 +40,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
 
     protected String TAG = getClass().getSimpleName();
 
-    protected static final int LIST_LOADER_ID = 1;
+    protected final int LIST_LOADER_ID = hashCode();
 
     @InjectView(R.id.list)
     ListView mListView;
@@ -77,7 +77,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem + visibleItemCount < totalItemCount) {
+                if (firstVisibleItem + visibleItemCount > totalItemCount) {
                     mState = MORE;
                     getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListFragment.this);
                 }
@@ -92,7 +92,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
                 getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListFragment.this);
             }
         });
-
+Logger.debug(TAG, "onviewcreated");
         getLoaderManager().initLoader(LIST_LOADER_ID, null, this);
     }
 
@@ -107,7 +107,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
             mSwipeRefresh.setRefreshing(false);
             mSwipeRefresh.setEnabled(true);
         }
-        Log.d(TAG, data + " test");
+        Logger.debug(TAG, data + " test");
         if (data != null) {
             if (mState == REFRESH || mState == LOAD) {
                 mOffset = mAdapter.load(data);

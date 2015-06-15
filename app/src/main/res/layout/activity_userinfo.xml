@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        style="@style/TitleBar">
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/TitleBarLeft" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/payment_title" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_user"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="@color/bg_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_primary"
+            android:text="@string/userinfo_avatar"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/more"
+            style="@style/MoreItemArrow"
+            android:layout_marginRight="@dimen/padding_primary"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding_primary"
+            android:layout_toLeftOf="@id/more"
+            android:text="nicheng"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <com.yueqiu.widget.IcsLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:background="@color/bg_white"
+        android:divider="@drawable/line_divider"
+        android:orientation="vertical"
+        android:showDividers="beginning|middle|end">
+
+        <com.yueqiu.widget.SettingView
+            android:id="@+id/nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:desc="nickname"
+            app:text="@string/userinfo_nickname" />
+
+        <com.yueqiu.widget.SettingView
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:desc="111111111111"
+            app:text="@string/userinfo_mobile" />
+
+        <com.yueqiu.widget.SettingView
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/userinfo_modifypwd" />
+
+    </com.yueqiu.widget.IcsLinearLayout>
+
+</LinearLayout>

@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.yueqiu.index.ActBallListFragment;
+import com.yueqiu.index.GameListFragment;
+import com.yueqiu.mine.MineFragment;
 import com.yueqiu.widget.BottomTabView;
 
 import butterknife.InjectView;
@@ -91,11 +92,11 @@ public class MainActivity extends BaseActivity {
 
         if (fragment == null) {
             if (tag.equals(TAG_01)) {
-                fragment = ActBallListFragment.newInstance();
+                fragment = GameListFragment.newInstance();
             } else if (tag.equals(TAG_02)) {
-                fragment = ActBallListFragment.newInstance();
+                fragment = MineFragment.newInstance();
             } else if (tag.equals(TAG_03)) {
-                fragment = ActBallListFragment.newInstance();
+                fragment = MineFragment.newInstance();
             }
 
             ft.add(R.id.content, fragment, tag);

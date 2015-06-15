@@ -3,8 +3,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@color/bg_white"
-                android:paddingLeft="@dimen/space_horizontal"
-                android:paddingRight="@dimen/space_horizontal">
+                android:paddingLeft="@dimen/padding_primary"
+                android:paddingRight="@dimen/padding_primary">
 
     <TextView
         android:id="@+id/city"

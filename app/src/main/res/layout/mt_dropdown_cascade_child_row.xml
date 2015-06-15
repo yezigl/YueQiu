@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dropdown_height"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/dropdown_paddingCascade"
+    android:paddingRight="@dimen/dropdown_paddingRight"
+    android:background="@drawable/dropdown_item_bg"
+    android:textColor="@color/text_primary"
+    android:textSize="@dimen/dropdown_textSize" />

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yueqiu.widget.DropdownView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="@drawable/bg_tab_bottom"
+    android:clickable="true"
+    android:drawablePadding="10dp"
+    android:gravity="center_vertical"
+    android:maxLines="1"
+    android:padding="@dimen/padding_primary"
+    android:singleLine="true"
+    android:text="今天"
+    android:textColor="@color/dropdown_text"
+    android:textSize="@dimen/dropdown_title_textSize" />

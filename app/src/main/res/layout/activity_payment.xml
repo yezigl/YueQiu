@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/TitleBarLeft" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/payment_title" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vertical_56dp"
+        android:background="@color/bg_white" />
+
+    <com.yueqiu.widget.IcsLinearLayout
+        style="@style/IcsStyle"
+        android:layout_marginTop="@dimen/vertical_margin">
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_add" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="查看地图"
+                android:textColor="@color/text_theme"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/date"
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/number"
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_add" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_add" />
+
+            <TextView
+                android:id="@+id/organizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="查看地图"
+                android:textColor="@color/text_theme"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+    </com.yueqiu.widget.IcsLinearLayout>
+
+    <com.yueqiu.widget.IcsLinearLayout
+        style="@style/IcsStyle"
+        android:layout_marginTop="@dimen/vertical_margin">
+
+        <RelativeLayout
+            android:id="@+id/layout_alipay"
+            style="@style/FormGroup.Click">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_add"
+                android:text="@string/payment_alipay" />
+
+            <TextView
+                android:id="@+id/alipay_checked"
+                style="@style/FormControlRight.Checked"
+                android:text="@string/payment_checked" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_weixin"
+            style="@style/FormGroup.Click">
+
+            <TextView
+                style="@style/FormControl"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                android:text="@string/payment_weixin" />
+
+            <TextView
+                android:id="@+id/weixin_checked"
+                style="@style/FormControlRight.Checked"
+                android:text="@string/payment_checked"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+    </com.yueqiu.widget.IcsLinearLayout>
+
+    <Button
+        android:id="@+id/order_pay"
+        style="@style/Button.Large.Orange"
+        android:layout_marginLeft="@dimen/padding_primary"
+        android:layout_marginRight="@dimen/padding_primary"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:text="@string/payment_confirm" />
+
+</LinearLayout>

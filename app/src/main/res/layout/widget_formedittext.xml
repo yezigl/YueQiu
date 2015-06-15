@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/mtformedittext_height"
+    android:paddingLeft="@dimen/padding_primary"
+    android:paddingRight="@dimen/padding_primary">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="@dimen/mtformedittext_label_width"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_darker"
+        android:textSize="@dimen/mtformedittext_label_textSize" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/label"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/mtformedittext_input_hint_textSize" />
+
+    <ImageView
+        android:id="@+id/clear"
+        style="@style/EditTextDeleteIcon"
+        android:contentDescription="@string/app_name" />
+
+</RelativeLayout>

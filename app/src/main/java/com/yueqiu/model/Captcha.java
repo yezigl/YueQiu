@@ -11,15 +11,15 @@ package com.yueqiu.model;
  * @version 1.0
  * @since 4.1
  */
-public class ActBall {
+public class Captcha extends Res {
 
-    private String name;
+    private boolean result;
 
-    public String getName() {
-        return name;
+    public boolean isResult() {
+        return result;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setResult(boolean result) {
+        this.result = result;
     }
 }

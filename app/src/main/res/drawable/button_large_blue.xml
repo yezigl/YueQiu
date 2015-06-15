@@ -3,9 +3,9 @@
 
     <item android:state_enabled="true" android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="#ff2bb8aa" />
+            <solid android:color="@color/bg_theme" />
 
-            <stroke android:width="1dp" android:color="#ff00a692" />
+            <stroke android:width="1dp" android:color="@color/bg_theme" />
 
             <corners android:radius="2dp" />
 
@@ -16,9 +16,9 @@
     </item>
     <item android:state_enabled="true" android:state_pressed="false">
         <shape android:shape="rectangle">
-            <solid android:color="#ff3dc6b6" />
+            <solid android:color="@color/bg_theme" />
 
-            <stroke android:width="1dp" android:color="#ff2bb8aa" />
+            <stroke android:width="1dp" android:color="@color/bg_theme" />
 
             <corners android:radius="2dp" />
 

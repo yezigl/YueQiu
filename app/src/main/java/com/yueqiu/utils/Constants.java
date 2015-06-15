@@ -15,7 +15,7 @@ public class Constants {
 
     public static final String UMENG_APPKEY = "54e5cfbcfd98c585cb000554";
 
-    public static final String API_HOST = "http://api.yezi.gl";
+    public static final String API_HOST = "http://api.yueqiua.com";
 
     public static final String APP = "beauty";
 

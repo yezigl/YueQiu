@@ -6,4 +6,30 @@
         <attr name="android:text" />
     </declare-styleable>
 
+    <declare-styleable name="SettingView">
+        <attr name="showHeaderDivider" format="boolean" />
+        <attr name="showFooterDivider" format="boolean" />
+        <attr name="text" format="string" />
+        <attr name="showMore" format="boolean" />
+        <attr name="desc" format="string" />
+        <attr name="isToggle" format="boolean" />
+        <attr name="onClick" format="string" />
+        <attr name="onToggleClick" format="string" />
+        <attr name="icon" />
+    </declare-styleable>
+
+    <declare-styleable name="IcsLinearLayout">
+        <attr name="android:divider" />
+        <attr name="android:showDividers" />
+        <attr name="android:dividerPadding" />
+        <attr name="android:measureWithLargestChild" />
+    </declare-styleable>
+
+    <declare-styleable name="FormEditText">
+        <attr name="label" format="string" />
+        <attr name="android:inputType" />
+        <attr name="android:hint" />
+        <attr name="android:maxLength" />
+    </declare-styleable>
+
 </resources>

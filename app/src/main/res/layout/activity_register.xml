@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/register_title" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/vertical_margin"
+            android:paddingRight="@dimen/vertical_margin"
+            android:paddingTop="@dimen/vertical_margin">
+
+            <EditText
+                android:id="@+id/mobile"
+                style="@style/FormInput"
+                android:hint="@string/login_mobile"
+                android:inputType="number"
+                android:maxLength="11" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/captcha"
+                    style="@style/FormInput"
+                    android:hint="@string/register_captcha_hint"
+                    android:inputType="number"
+                    android:maxLength="6" />
+
+                <Button
+                    android:id="@+id/button_captcha"
+                    style="@style/Button.Adaptive.Blue"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_base"
+                    android:text="@string/login_click2captcha" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/FormInput"
+                android:hint="@string/login_password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/button_register"
+                style="@style/Button.Large.Blue"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:text="@string/register_button" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

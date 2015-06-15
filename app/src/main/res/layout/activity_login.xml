@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/login_title" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/vertical_margin"
+        android:paddingRight="@dimen/vertical_margin"
+        android:paddingTop="@dimen/vertical_margin">
+
+
+        <EditText
+            android:id="@+id/mobile"
+            style="@style/FormInput"
+            android:hint="@string/login_mobile"
+            android:inputType="number"
+            android:maxLength="11" />
+
+        <EditText
+            android:id="@+id/password"
+            style="@style/FormInput"
+            android:layout_marginTop="@dimen/padding_base"
+            android:hint="@string/login_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/button_login"
+            style="@style/Button.Large.Blue"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:text="@string/login_button" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_margin">
+
+            <TextView
+                android:id="@+id/button_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/login_register"
+                android:textColor="@color/text_theme"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/button_resetpwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/login_resetpwd"
+                android:textColor="@color/text_theme"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -9,8 +9,17 @@
     <color name="text_theme">@color/theme_primary</color>
     <color name="text_lighter">#999999</color>
     <color name="text_darker">#333333</color>
+    <color name="text_hint">#ffbcbcbc</color>
 
     <color name="bg_divider">#d8d8d8</color>
     <color name="bg_white">#ffffff</color>
+    <color name="bg_pressed">#f8f8f8</color>
+    <color name="bg_theme">@color/theme_primary</color>
+    <color name="bg_gray">#d5d5d5</color>
+    <color name="bg_orange">#ffff9d3c</color>
+    <color name="bg_dropdown">#99000000</color>
+    <color name="bg_dropdown_normal">#fff8f8f8</color>
+    <color name="bg_dropdown_press">#ffeeeeee</color>
+    <color name="bg_window">#f8f8f8</color>
 
 </resources>
