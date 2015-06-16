@@ -61,4 +61,7 @@
     <string name="userinfo_mobile">手机</string>
     <string name="userinfo_modifypwd">修改密码</string>
 
+    <string name="load_reload">加载失败，点击重新加载</string>
+    <string name="load_norecord">暂无记录</string>
+
 </resources>

@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.yueqiu.utils.Logger;
 import com.yueqiu.widget.BaseArrayAdapter;
 import com.yueqiu.widget.BaseAsyncTaskLoader;
+import com.yueqiu.widget.LoadView;
 
 import java.util.List;
 
@@ -46,6 +47,8 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
     ListView mListView;
     @InjectView(R.id.layout_swiperefresh)
     SwipeRefreshLayout mSwipeRefresh;
+    @InjectView(R.id.load)
+    LoadView mLoad;
 
     BaseArrayAdapter<T> mAdapter;
 
@@ -92,12 +95,18 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
                 getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListFragment.this);
             }
         });
-Logger.debug(TAG, "onviewcreated");
+
         getLoaderManager().initLoader(LIST_LOADER_ID, null, this);
     }
 
     @Override
     public Loader<List<T>> onCreateLoader(int id, Bundle args) {
+        if (mState == LOAD) {
+            mAdapter.clear();
+        }
+        if (mState == LOAD || mState == REFRESH) {
+            mLoad.loading(mListView);
+        }
         return getLoader().setOffset(mOffset);
     }
 
@@ -109,12 +118,20 @@ Logger.debug(TAG, "onviewcreated");
         }
         Logger.debug(TAG, data + " test");
         if (data != null) {
-            if (mState == REFRESH || mState == LOAD) {
-                mOffset = mAdapter.load(data);
-            } else if (mState == MORE) {
-                mOffset = mAdapter.more(data);
+            if (data.isEmpty()) {
+                mLoad.none(mListView);
+            } else {
+                if (mState == REFRESH || mState == LOAD) {
+                    mOffset = mAdapter.load(data);
+                } else if (mState == MORE) {
+                    mOffset = mAdapter.more(data);
+                }
+                mLoad.success(mListView);
             }
+        } else {
+            mLoad.fail();
         }
+        mState = LOAD;
     }
 
     @Override

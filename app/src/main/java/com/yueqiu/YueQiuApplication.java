@@ -7,6 +7,7 @@ package com.yueqiu;
 import android.app.Application;
 
 import com.umeng.analytics.AnalyticsConfig;
+import com.yueqiu.utils.AppHanlder;
 import com.yueqiu.utils.ChannelReader;
 
 /**
@@ -18,9 +19,13 @@ import com.yueqiu.utils.ChannelReader;
  */
 public class YueQiuApplication extends Application {
 
+    public static AppHanlder hanlder;
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        hanlder = new AppHanlder(this);
 
         AnalyticsConfig.setAppkey("556d610c67e58eef5a0014aa");
         AnalyticsConfig.setChannel(ChannelReader.getChannel(this));

@@ -9,15 +9,15 @@ package com.yueqiu.model;
  */
 public class Representation<T> {
 
-    private Error error;
+    private AppError error;
     private T data;
     private long timestamp;
 
-    public Error getError() {
+    public AppError getError() {
         return error;
     }
 
-    public void setError(Error error) {
+    public void setError(AppError error) {
         this.error = error;
     }
 

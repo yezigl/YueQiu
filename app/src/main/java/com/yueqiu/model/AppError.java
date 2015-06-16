@@ -7,7 +7,7 @@ package com.yueqiu.model;
  * @version 1.0
  * @since 1.0
  */
-public class Error {
+public class AppError {
 
     private int code;
     private String message;

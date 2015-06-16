@@ -198,7 +198,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/text_14sp</item>
         <item name="android:drawablePadding">@dimen/padding_base</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center_vertical</item>
@@ -221,11 +221,11 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textColor">@color/text_theme</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/text_12sp</item>
     </style>
 
     <style name="FormControlRight.Checked">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:clickable">true</item>
     </style>
 
@@ -245,7 +245,7 @@
         <item name="android:paddingLeft">@dimen/padding_base</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textColorHint">@color/text_lighter</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
     </style>
 
     <style name="IcsStyle">

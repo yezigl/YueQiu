@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.yueqiu.loader.LoginLoader;
 import com.yueqiu.model.Login;
 import com.yueqiu.utils.Constants;
-import com.yueqiu.utils.Utils;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -31,7 +30,7 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 
 //    CaptchaTimer mTimer;
     long timeRemain;
-    String mobile, captcha;
+    String mobile, password;
     Class<?> targetActivity;
 
     @Override
@@ -80,11 +79,11 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 
     @OnClick(R.id.button_login)
     public void login(View v) {
-        captcha = mPassword.getText().toString();
-        if (!Utils.isCaptcha(captcha)) {
-            showToast(R.string.login_captcha_error);
-            return;
-        }
+        password = mPassword.getText().toString();
+//        if (!Utils.isCaptcha(password)) {
+//            showToast(R.string.login_captcha_error);
+//            return;
+//        }
         getLoaderManager().initLoader(hashCode() + 1, null, this);
     }
 
@@ -92,11 +91,12 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
     public void register() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
     public Loader<Login> onCreateLoader(int id, Bundle args) {
-        return new LoginLoader(this, mobile, captcha);
+        return new LoginLoader(this, mobile, password);
     }
 
     @Override

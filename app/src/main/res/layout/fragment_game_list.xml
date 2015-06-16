@@ -24,71 +24,40 @@
 
     </RelativeLayout>
 
-    <com.yueqiu.widget.IcsLinearLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/bg_white"
-        android:divider="@drawable/line_divider"
-        android:orientation="horizontal"
-        android:showDividers="middle">
+        android:layout_height="@dimen/vertical_48dp"
+        android:background="@color/text_white"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/text_theme"
+        app:tabTextColor="@color/text_primary">
 
-        <com.yueqiu.widget.DropdownView
-            android:id="@+id/tab1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingLeft="@dimen/padding_base"
-            android:singleLine="true"
-            android:text="今天"
-            android:textColor="@color/dropdown_text"
-            android:textSize="@dimen/dropdown_title_textSize" />
-
-        <com.yueqiu.widget.DropdownView
-            android:id="@+id/tab2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingLeft="@dimen/padding_base"
-            android:singleLine="true"
-            android:text="全部"
-            android:textColor="@color/dropdown_text"
-            android:textSize="@dimen/dropdown_title_textSize" />
-
-        <com.yueqiu.widget.DropdownView
-            android:id="@+id/tab3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingLeft="@dimen/padding_base"
-            android:singleLine="true"
-            android:text="最新"
-            android:textColor="@color/dropdown_text"
-            android:textSize="@dimen/dropdown_title_textSize" />
-
-    </com.yueqiu.widget.IcsLinearLayout>
+    </android.support.design.widget.TabLayout>
 
     <View style="@style/Divider.Horizontal" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/layout_swiperefresh"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list"
-            style="@style/List"
-            android:divider="@null"
-            android:dividerHeight="@dimen/padding_base" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/layout_swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/list"
+                style="@style/List"
+                android:dividerHeight="@dimen/padding_base" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <com.yueqiu.widget.LoadView
+            android:id="@+id/load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
 </LinearLayout>

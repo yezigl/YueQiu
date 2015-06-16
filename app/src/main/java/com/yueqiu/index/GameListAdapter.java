@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.yueqiu.R;
 import com.yueqiu.model.Game;
+import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.ImageViewLoader;
 import com.yueqiu.widget.BaseArrayAdapter;
 
@@ -24,8 +25,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- *
- *
  * @author lidehua
  * @version 1.0
  * @since 4.1
@@ -47,17 +46,34 @@ public class GameListAdapter extends BaseArrayAdapter<Game> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Game ab = getItem(position);
+        final Game ab = getItem(position);
         ImageViewLoader.with(getContext(), holder.icon).load(ab.getStadium().getThumbnail());
+        ImageViewLoader.with(getContext(), holder.image).load(ab.getStadium().getThumbnail());
         holder.title.setText(ab.getTitle());
         holder.address.setText(ab.getStadium().getName());
         holder.date.setText(ab.getDate());
         holder.partner.setText(ab.getTotal() + "/" + ab.getAttend());
         holder.price.setText("￥" + ab.getPrice());
+        holder.status.setText(ab.getStatusStr());
+        switch (ab.getStatus()) {
+            case 1:
+                holder.status.setTextColor(getContext().getResources().getColor(R.color.text_disable));
+                break;
+            case 2:
+                holder.status.setTextColor(getContext().getResources().getColor(R.color.text_theme));
+                break;
+            case 3:
+                holder.status.setTextColor(getContext().getResources().getColor(R.color.text_orange));
+                break;
+            case 4:
+                holder.status.setTextColor(getContext().getResources().getColor(R.color.text_disable));
+                break;
+        }
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), GameDetailActivity.class);
+                intent.putExtra(Constants.INTENT_ACTIVITY_ID, ab.getId());
                 getContext().startActivity(intent);
             }
         });
@@ -86,5 +102,9 @@ public class GameListAdapter extends BaseArrayAdapter<Game> {
         TextView price;
         @InjectView(R.id.layout_partner)
         LinearLayout layoutPartner;
+        @InjectView(R.id.image)
+        ImageView image;
+        @InjectView(R.id.status)
+        TextView status;
     }
 }

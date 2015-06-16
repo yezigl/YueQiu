@@ -10,6 +10,8 @@
     <color name="text_lighter">#999999</color>
     <color name="text_darker">#333333</color>
     <color name="text_hint">#ffbcbcbc</color>
+    <color name="text_orange">#ff5722</color>
+    <color name="text_disable">#ffbcbcbc</color>
 
     <color name="bg_divider">#d8d8d8</color>
     <color name="bg_white">#ffffff</color>

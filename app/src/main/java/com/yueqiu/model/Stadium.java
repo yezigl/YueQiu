@@ -3,6 +3,8 @@
  */
 package com.yueqiu.model;
 
+import java.util.List;
+
 /**
  * description here
  *
@@ -15,6 +17,8 @@ public class Stadium {
     private String thumbnail;
     private float longitude;
     private float latitude;
+    private int size;
+    private List<String> gallery;
 
     public String getName() {
         return name;
@@ -48,4 +52,19 @@ public class Stadium {
         this.latitude = latitude;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List<String> getGallery() {
+        return gallery;
+    }
+
+    public void setGallery(List<String> gallery) {
+        this.gallery = gallery;
+    }
 }

@@ -6,7 +6,11 @@ package com.yueqiu.widget;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.os.Message;
 
+import com.yueqiu.R;
+import com.yueqiu.YueQiuApplication;
+import com.yueqiu.model.AppError;
 import com.yueqiu.model.Login;
 import com.yueqiu.model.Representation;
 
@@ -45,19 +49,36 @@ public abstract class BaseAsyncTaskLoader<D> extends AsyncTaskLoader<D> {
         cancelLoad();
     }
 
-    protected Map<String, Object> getParams(boolean withToken) {
+    protected Map<String, Object> getParams() {
         Map<String, Object> params = new HashMap<>();
-        if (withToken) {
-            params.put("token", Login.getToken(getContext()));
-        }
-
         return params;
+    }
+
+    protected String getTokenUrl(String baseUrl) {
+        return baseUrl + (baseUrl.contains("?") ? "&" : "?") + "token=" + Login.getToken(getContext());
     }
 
     protected <T> T getData(Representation<T> rep) {
         if (rep == null) {
-            // show toast
+            Message msg = new Message();
+            msg.what = R.id.api_error;
+            msg.obj = "接口请求失败";
+            YueQiuApplication.hanlder.sendMessage(msg);
         } else {
+            AppError error = rep.getError();
+            if (error != null && error.getCode() > 0) {
+                Message msg = new Message();
+                msg.obj = error.getMessage();
+                switch (error.getCode()) {
+                    case 401:
+                        msg.what = R.id.goto_login;
+                        break;
+                    default:
+                        msg.what = R.id.api_error;
+                }
+                YueQiuApplication.hanlder.sendMessage(msg);
+                return null;
+            }
             return rep.getData();
         }
         return null;

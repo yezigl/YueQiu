@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="@dimen/game_list_item_icon_size"
+            android:layout_height="@dimen/game_list_item_icon_size"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_base"
@@ -25,9 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_base"
             android:layout_toRightOf="@id/icon"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
+            android:textColor="@color/text_darker"
+            android:textSize="@dimen/text_16sp" />
 
         <TextView
             android:id="@+id/distance"
@@ -37,7 +38,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/padding_base"
             android:textColor="@color/text_lighter"
-            android:textSize="14sp" />
+            android:textSize="@dimen/text_14sp" />
     </RelativeLayout>
 
     <View
@@ -59,18 +60,18 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="@dimen/game_list_item_image_size"
+                android:layout_height="@dimen/game_list_item_image_size"
                 android:contentDescription="@string/app_name" />
 
             <TextView
+                android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/image"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/padding_base"
-                android:text="进行中"
-                android:textSize="18sp" />
+                android:layout_marginTop="@dimen/padding_primary"
+                android:textSize="@dimen/text_16sp" />
 
         </RelativeLayout>
 
@@ -87,9 +88,8 @@
                 android:layout_marginTop="@dimen/padding_primary"
                 android:drawableLeft="@drawable/ic_location_gray"
                 android:drawablePadding="@dimen/padding_base"
-                android:text="tttt"
                 android:textColor="@color/text_primary"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_14sp" />
 
             <TextView
                 android:id="@+id/date"
@@ -100,7 +100,7 @@
                 android:drawableLeft="@drawable/ic_cale"
                 android:drawablePadding="@dimen/padding_base"
                 android:textColor="@color/text_primary"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_14sp" />
 
             <TextView
                 android:id="@+id/partner"
@@ -112,17 +112,18 @@
                 android:drawableLeft="@drawable/ic_rule"
                 android:drawablePadding="@dimen/padding_base"
                 android:textColor="@color/text_primary"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_14sp" />
 
             <View
                 android:id="@+id/divider"
                 style="@style/Divider.Horizontal"
-                android:layout_below="@id/partner" />
+                android:layout_below="@id/partner"
+                android:layout_marginRight="@dimen/padding_primary" />
 
             <LinearLayout
                 android:id="@+id/layout_partner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/vertical_48dp"
                 android:layout_below="@id/divider"
                 android:orientation="horizontal">
 
@@ -132,10 +133,11 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/date"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/padding_primary"
-                android:textColor="@color/text_primary"
-                android:textSize="24sp" />
+                android:textColor="@color/text_orange"
+                android:textSize="@dimen/text_16sp" />
 
         </RelativeLayout>
 

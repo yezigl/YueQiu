@@ -31,7 +31,8 @@ public class Constants {
     public static final String PREF_AVATAR = "pref_avatar";
     public static final String PREF_MOBILE = "pref_mobile";
 
-    public static final String INTENT_LOCATION_CITY = "intent_location_city";
-    public static final String INTENT_CONFIG = "intent_config";
-    public static final String INTENT_TARGET_ACTIVITY = "intent_target_activity";
+    public static final String INTENT_LOCATION_CITY = "location_city";
+    public static final String INTENT_CONFIG = "config";
+    public static final String INTENT_TARGET_ACTIVITY = "target_activity";
+    public static final String INTENT_ACTIVITY_ID = "activity_id";
 }

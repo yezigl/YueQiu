@@ -15,6 +15,11 @@ import java.util.List;
  */
 public class Game {
 
+    public static final int DATE_TYPE_ALL = 0;
+    public static final int DATE_TYPE_TODAY = 1;
+    public static final int DATE_TYPE_TOMM = 2;
+    public static final int DATE_TYPE_LATER = 3;
+
     private String id;
     private String title;
     private int type;
@@ -26,6 +31,9 @@ public class Game {
     private int attend;
     private User organizer;
     private List<User> players;
+    private int status;
+    private String statusStr;
+    private String orderId;
 
     public String getId() {
         return id;
@@ -113,5 +121,49 @@ public class Game {
 
     public void setPlayers(List<User> players) {
         this.players = players;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setValue(float value) {
+        this.value = value;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public void setAttend(int attend) {
+        this.attend = attend;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getStatusStr() {
+        return statusStr;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

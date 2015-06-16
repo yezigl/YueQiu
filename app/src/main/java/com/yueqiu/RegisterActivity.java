@@ -152,7 +152,7 @@ public class RegisterActivity extends BaseActivity implements LoaderManager.Load
     @Override
     public Loader<Login> onCreateLoader(int id, Bundle args) {
         showProgressDialog("正在提交请求...");
-        return new RegisterLoader(this).params(login, password, mobile, captcha);
+        return new RegisterLoader(this).params(mobile, password, captcha);
     }
 
     @Override

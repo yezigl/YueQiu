@@ -19,147 +19,145 @@
             android:text="@string/game_detail_title" />
     </RelativeLayout>
 
-    <ViewFlipper
-        android:id="@+id/viewflipper"
-        android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:flipInterval="5000"
-        android:inAnimation="@anim/slide_in"
-        android:outAnimation="@anim/slide_out"
-        android:persistentDrawingCache="animation" />
-
-    <com.yueqiu.widget.IcsLinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/viewflipper"
-        android:divider="@drawable/line_divider"
-        android:orientation="vertical"
-        android:showDividers="beginning|middle|end">
+        android:scrollbars="none">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/vertical_56dp"
-            android:paddingLeft="@dimen/padding_primary"
-            android:paddingRight="@dimen/padding_primary">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/padding_base"
-                android:contentDescription="@string/app_name" />
+            <ViewFlipper
+                android:id="@+id/viewflipper"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:flipInterval="5000"
+                android:inAnimation="@anim/slide_in"
+                android:outAnimation="@anim/slide_out"
+                android:persistentDrawingCache="animation" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
+            <com.yueqiu.widget.IcsLinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icon"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="beginning|middle|end">
 
-            <TextView
-                android:id="@+id/share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:drawableTop="@android:drawable/ic_menu_share"
-                android:gravity="center"
-                android:text="分享"
-                android:textColor="@color/text_lighter"
-                android:textSize="12sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/vertical_56dp"
+                    android:paddingLeft="@dimen/padding_primary"
+                    android:paddingRight="@dimen/padding_primary">
 
-            <TextView
-                android:id="@+id/collect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/padding_base"
-                android:layout_toLeftOf="@id/share"
-                android:drawableTop="@android:drawable/ic_menu_compass"
-                android:gravity="center"
-                android:text="收藏"
-                android:textColor="@color/text_lighter"
-                android:textSize="12sp" />
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/game_list_item_icon_size"
+                        android:layout_height="@dimen/game_list_item_icon_size"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_base"
+                        android:contentDescription="@string/app_name" />
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/icon"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
 
-        <RelativeLayout style="@style/FormGroup">
+                    <TextView
+                        android:id="@+id/share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@android:drawable/ic_menu_share"
+                        android:gravity="center"
+                        android:text="分享"
+                        android:textColor="@color/text_lighter"
+                        android:textSize="@dimen/text_12sp" />
 
-            <TextView
-                android:id="@+id/address"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
+                </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="查看地图"
-                android:textColor="@color/text_theme"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                <RelativeLayout style="@style/FormGroup">
 
-        <RelativeLayout style="@style/FormGroup">
+                    <TextView
+                        android:id="@+id/address"
+                        style="@style/FormControl"
+                        android:drawableLeft="@drawable/ic_location_gray" />
 
-            <TextView
-                android:id="@+id/date"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_my_calendar" />
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/gotomap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="查看地图"
+                        android:textColor="@color/text_theme"
+                        android:textSize="@dimen/text_12sp" />
+                </RelativeLayout>
 
-        <RelativeLayout style="@style/FormGroup">
+                <RelativeLayout style="@style/FormGroup">
 
-            <TextView
-                android:id="@+id/number"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/FormControl"
+                        android:drawableLeft="@drawable/ic_cale" />
+                </RelativeLayout>
 
-        <RelativeLayout style="@style/FormGroup">
+                <RelativeLayout style="@style/FormGroup">
 
-            <TextView
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
+                    <TextView
+                        android:id="@+id/rule"
+                        style="@style/FormControl"
+                        android:drawableLeft="@drawable/ic_rule" />
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/organizer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="查看地图"
-                android:textColor="@color/text_theme"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                <RelativeLayout style="@style/FormGroup">
 
-        <RelativeLayout style="@style/FormGroup">
+                    <TextView
+                        style="@style/FormControl"
+                        android:drawableLeft="@drawable/ic_orgnizer"
+                        android:text="组织者" />
 
-            <TextView
-                android:id="@+id/partner"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
+                    <TextView
+                        android:id="@+id/organizer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/text_theme"
+                        android:textSize="@dimen/text_12sp" />
+                </RelativeLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name"
-                android:src="@android:drawable/ic_menu_more" />
+                <RelativeLayout style="@style/FormGroup">
 
-            <!--<android.support.v7.widget.CardView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone" />-->
+                    <TextView
+                        android:id="@+id/player"
+                        style="@style/FormControl"
+                        android:drawableLeft="@drawable/ic_orgnizer" />
 
-        </RelativeLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"
+                        android:src="@android:drawable/ic_menu_more" />
 
-    </com.yueqiu.widget.IcsLinearLayout>
+                    <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:visibility="gone" />-->
+
+                </RelativeLayout>
+            </com.yueqiu.widget.IcsLinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/layout_signup"
@@ -168,10 +166,14 @@
         android:layout_alignParentBottom="true">
 
         <TextView
+            android:id="@+id/price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_primary"
+            android:textColor="@color/text_orange"
+            android:textSize="@dimen/text_16sp" />
 
         <TextView
             android:id="@+id/signed"
@@ -181,7 +183,7 @@
             android:gravity="center"
             android:text="@string/game_signed"
             android:textColor="@color/text_primary"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_14sp"
             android:visibility="gone" />
 
         <TextView
@@ -193,7 +195,7 @@
             android:gravity="center"
             android:text="@string/game_signup"
             android:textColor="@color/text_white"
-            android:textSize="14sp" />
+            android:textSize="@dimen/text_14sp" />
 
     </LinearLayout>
 
