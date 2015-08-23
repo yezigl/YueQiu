@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/share_title" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_48dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_primary"
+        android:paddingRight="@dimen/padding_primary">
+
+        <TextView
+            android:id="@+id/weixin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="@dimen/padding_base"
+            android:drawableTop="@drawable/ic_base_share_weixin"
+            android:gravity="center_horizontal"
+            android:text="微信"
+            android:textSize="@dimen/text_12sp" />
+
+        <TextView
+            android:id="@+id/weixinfriends"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="@dimen/padding_base"
+            android:drawableTop="@drawable/ic_base_share_weixin_friends"
+            android:gravity="center_horizontal"
+            android:text="微信朋友圈"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/vertical_48dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/share_qrcode" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:text="直接扫描二维码邀请好友安装" />
+
+</LinearLayout>

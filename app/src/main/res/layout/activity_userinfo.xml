@@ -9,20 +9,21 @@
         android:id="@+id/toolbar"
         style="@style/TitleBar">
 
-        <TextView
-            android:id="@+id/location"
-            style="@style/TitleBarLeft" />
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             style="@style/TitleBarTitle"
-            android:text="@string/payment_title" />
+            android:text="@string/userinfo_title" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layout_user"
         android:layout_width="match_parent"
-        android:layout_height="112dp"
+        android:layout_height="@dimen/avatar_height"
         android:background="@color/bg_white">
 
         <TextView
@@ -32,7 +33,7 @@
             android:layout_marginLeft="@dimen/padding_primary"
             android:text="@string/userinfo_avatar"
             android:textColor="@color/text_primary"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_16sp" />
 
         <ImageView
             android:id="@+id/more"
@@ -42,14 +43,11 @@
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/padding_primary"
-            android:layout_toLeftOf="@id/more"
-            android:text="nicheng"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
+            android:layout_toLeftOf="@id/more" />
 
     </RelativeLayout>
 
@@ -66,14 +64,12 @@
             android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:desc="nickname"
             app:text="@string/userinfo_nickname" />
 
         <com.yueqiu.widget.SettingView
             android:id="@+id/mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:desc="111111111111"
             app:text="@string/userinfo_mobile" />
 
         <com.yueqiu.widget.SettingView
@@ -83,5 +79,13 @@
             app:text="@string/userinfo_modifypwd" />
 
     </com.yueqiu.widget.IcsLinearLayout>
+
+    <Button
+        android:id="@+id/button_logout"
+        style="@style/Button.Large.Orange"
+        android:layout_marginLeft="@dimen/padding_primary"
+        android:layout_marginRight="@dimen/padding_primary"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:text="@string/mine_logout" />
 
 </LinearLayout>

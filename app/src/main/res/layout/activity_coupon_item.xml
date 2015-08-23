@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/padding_primary"
+    android:layout_marginRight="@dimen/padding_primary"
+    android:background="@drawable/bg_item_border"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/padding_primary"
+    android:paddingTop="@dimen/padding_primary">
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="1"
+            android:textColor="@color/text_darker"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/price"
+            android:layout_toLeftOf="@id/price"
+            android:gravity="center"
+            android:text="￥"
+            android:textColor="@color/text_darker"
+            android:textSize="@dimen/text_12sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机客户端专用"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_16sp" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_base"
+            android:text="请尽快使用"
+            android:textColor="@color/text_lighter"
+            android:textSize="@dimen/text_14sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

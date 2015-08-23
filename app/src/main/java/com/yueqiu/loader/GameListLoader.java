@@ -12,6 +12,7 @@ import com.yueqiu.model.Representation;
 import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.HttpUtils;
 import com.yueqiu.utils.JsonUtils;
+import com.yueqiu.utils.Logger;
 import com.yueqiu.widget.BaseAsyncTaskLoader;
 
 import java.util.List;
@@ -42,6 +43,7 @@ public class GameListLoader extends BaseAsyncTaskLoader<List<Game>> {
         Map<String, Object> params = getParams();
         params.put("dateType", dateType);
         String ret = HttpUtils.get(getTokenUrl(Constants.API_HOST + "/1/activities"), params);
+        Logger.debug("Loader", ret);
         Representation<List<Game>> rep = JsonUtils.fromJson(ret, new TypeToken<Representation<List<Game>>>() {
         }.getType());
         return getData(rep);

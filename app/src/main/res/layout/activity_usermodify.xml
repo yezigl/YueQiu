@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/TitleBarTitle" />
+
+        <TextView
+            android:id="@+id/button_modify"
+            style="@style/TitleBarRight"
+            android:text="@string/userinfo_modify" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vertical_48dp"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:gravity="center_vertical"
+        android:inputType="text"
+        android:paddingLeft="@dimen/padding_primary"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_16sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/mobile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vertical_48dp"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:gravity="center_vertical"
+        android:inputType="number"
+        android:maxLength="11"
+        android:paddingLeft="@dimen/padding_primary"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_16sp"
+        android:visibility="gone" />
+
+</LinearLayout>

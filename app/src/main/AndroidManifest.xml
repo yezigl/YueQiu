@@ -18,21 +18,22 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!--【可选】如果需要设置前台是否显示通知，需要设置这个权限-->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />;
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera.flash" />
-
-    <!--
-     To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
-     option is required to comply with the Google+ Sign-In developer policies
-    -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <!-- To retrieve the account name (email) as part of sign-in: -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".YueQiuApplication"
@@ -44,29 +45,13 @@
             android:name="com.amap.api.v2.apikey"
             android:value="1bbf1b34b37252a1cf546555aff00c28" />
 
-        <!--<activity-->
-            <!--android:name="com.alipay.sdk.pay.demo.PayDemoActivity"-->
-            <!--android:label="@string/app_name">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
         <activity
-            android:name="com.weixin.paydemo.PayActivity"
-            android:label="@string/app_name"
-            android:exported="true"
-            android:launchMode="singleTop">
+            android:name=".WelcomeActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="wxf2f565574a968187"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -90,7 +75,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".mine.OrderListActivity"
+            android:name=".mine.MyOrderListActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -102,7 +87,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".mine.SuggestActivity"
+            android:name=".mine.ShareActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -119,6 +104,30 @@
         </activity>
         <activity
             android:name=".index.MapActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".index.OrderActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mine.ResetPasswordActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mine.UserModifyActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mine.MyOrderActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mine.FeedbackActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mine.MineActivity"
             android:screenOrientation="portrait">
         </activity>
 
@@ -139,7 +148,18 @@
         <!-- alipay sdk end -->
         <!-- weixin pay begin -->
         <activity
-            android:name="com.weixin.paydemo.wxapi.WXPayEntryActivity"
+            android:name="com.weixin.pay.PayActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wxf2f565574a968187" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.weixin.pay.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop" />
 
@@ -150,6 +170,107 @@
             </intent-filter>
         </receiver>
         <!-- weixin pay end -->
+        <!-- umeng push start -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="@string/umeng_appkey" />
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="@string/umeng_channel" />
+
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="@string/umeng_message_secret" />
+
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false"
+            android:process=":push">
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.SystemReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.MessageReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.ElectionReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.ELECTION_RESULT_V4" />
+                <category android:name="umeng" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.RegistrationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.yueqiu.intent.action.COMMAND" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.umeng.message.UmengMessageBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.umeng.message.UmengService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="com.yueqiu.intent.action.START" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.yueqiu.intent.action.COCKROACH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.PING_V4" />
+                <category android:name="umeng" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.umeng.message.UmengIntentService"
+            android:process=":push" />
+        <service
+            android:name="com.umeng.message.UmengMessageIntentReceiverService"
+            android:exported="true"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="org.android.agoo.client.MessageReceiverService" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.android.agoo.client.ElectionReceiverService" />
+            </intent-filter>
+        </service>
+        <!-- V1.3.0添加的service，负责下载通知的资源 -->
+        <service android:name="com.umeng.message.UmengDownloadResourceService" />
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService">
+        </service>
+        <!-- umeng push end -->
     </application>
 
 </manifest>

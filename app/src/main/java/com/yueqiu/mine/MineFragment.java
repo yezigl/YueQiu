@@ -1,15 +1,28 @@
 package com.yueqiu.mine;
 
+import android.app.LoaderManager;
 import android.content.Intent;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.fb.fragment.FeedbackFragment;
 import com.yueqiu.BaseFragment;
 import com.yueqiu.R;
+import com.yueqiu.loader.UserInfoLoader;
+import com.yueqiu.model.Login;
+import com.yueqiu.model.User;
+import com.yueqiu.utils.Constants;
+import com.yueqiu.utils.ImageViewLoader;
+import com.yueqiu.utils.Utils;
 
+import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
@@ -19,7 +32,14 @@ import butterknife.OnClick;
  * @version 1.0
  * @since 1.0
  */
-public class MineFragment extends BaseFragment {
+public class MineFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<User> {
+
+    @InjectView(R.id.avatar)
+    ImageView mAvatar;
+    @InjectView(R.id.nickname)
+    TextView mNickname;
+
+    User user;
 
     public static MineFragment newInstance() {
         return new MineFragment();
@@ -31,33 +51,78 @@ public class MineFragment extends BaseFragment {
         return createView(inflater, container, R.layout.fragment_mine);
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (Login.isLogin(getActivity())) {
+            getLoaderManager().restartLoader(hashCode(), null, this);
+        } else {
+            mNickname.setText("点击登录");
+        }
+    }
+
+    @Override
+    public Loader<User> onCreateLoader(int id, Bundle args) {
+        return new UserInfoLoader(getActivity());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<User> loader, User data) {
+        if (data != null) {
+            user = data;
+            ImageViewLoader.with(getActivity(), mAvatar)
+                    .round(Utils.getDimen(getActivity(), R.dimen.avatar_size) / 2)
+                    .load(data.getAvatar());
+            mNickname.setText(data.getNickname());
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<User> loader) {
+        loader.stopLoading();
+    }
+
     @OnClick(R.id.layout_user)
     public void userinfo(View v) {
         Intent intent = new Intent(getActivity(), UserInfoActivity.class);
-        startActivity(intent);
+        intent.putExtra(Constants.INTENT_USER, user);
+        startLoginActivity(intent);
     }
 
     @OnClick(R.id.order)
     public void order(View v) {
-        Intent intent = new Intent(getActivity(), OrderListActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(getActivity(), MyOrderListActivity.class);
+        startLoginActivity(intent);
     }
 
     @OnClick(R.id.coupon)
     public void coupon(View v) {
         Intent intent = new Intent(getActivity(), CouponActivity.class);
-        startActivity(intent);
+        startLoginActivity(intent);
     }
 
     @OnClick(R.id.message)
     public void message(View v) {
         Intent intent = new Intent(getActivity(), MessageActivity.class);
+        startLoginActivity(intent);
+    }
+
+    @OnClick(R.id.feedback)
+    public void feedback(View v) {
+        Intent intent = new Intent(getActivity(), FeedbackActivity.class);
+        String id = new FeedbackAgent(getActivity()).getDefaultConversation().getId();
+        intent.putExtra(FeedbackFragment.BUNDLE_KEY_CONVERSATION_ID, id);
         startActivity(intent);
     }
 
-    @OnClick(R.id.suggest)
-    public void suggest(View v) {
-        Intent intent = new Intent(getActivity(), SuggestActivity.class);
+    @OnClick(R.id.share)
+    public void share(View v) {
+        Intent intent = new Intent(getActivity(), ShareActivity.class);
         startActivity(intent);
     }
 
@@ -66,4 +131,5 @@ public class MineFragment extends BaseFragment {
         Intent intent = new Intent(getActivity(), AboutActivity.class);
         startActivity(intent);
     }
+
 }

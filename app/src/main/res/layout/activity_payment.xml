@@ -19,66 +19,30 @@
 
     </RelativeLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vertical_56dp"
-        android:background="@color/bg_white" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:background="@color/bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_primary">
 
-    <com.yueqiu.widget.IcsLinearLayout
-        style="@style/IcsStyle"
-        android:layout_marginTop="@dimen/vertical_margin">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vertical_48dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_16sp" />
 
-        <RelativeLayout style="@style/FormGroup">
-
-            <TextView
-                android:id="@+id/address"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="查看地图"
-                android:textColor="@color/text_theme"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/FormGroup">
-
-            <TextView
-                android:id="@+id/date"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_my_calendar" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/FormGroup">
-
-            <TextView
-                android:id="@+id/number"
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/FormGroup">
-
-            <TextView
-                style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add" />
-
-            <TextView
-                android:id="@+id/organizer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="查看地图"
-                android:textColor="@color/text_theme"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-    </com.yueqiu.widget.IcsLinearLayout>
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vertical_48dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_16sp" />
+    </LinearLayout>
 
     <com.yueqiu.widget.IcsLinearLayout
         style="@style/IcsStyle"
@@ -94,7 +58,6 @@
 
             <TextView
                 style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_add"
                 android:text="@string/payment_alipay" />
 
             <TextView
@@ -109,7 +72,6 @@
 
             <TextView
                 style="@style/FormControl"
-                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
                 android:text="@string/payment_weixin" />
 
             <TextView
@@ -122,7 +84,7 @@
     </com.yueqiu.widget.IcsLinearLayout>
 
     <Button
-        android:id="@+id/order_pay"
+        android:id="@+id/button_payment"
         style="@style/Button.Large.Orange"
         android:layout_marginLeft="@dimen/padding_primary"
         android:layout_marginRight="@dimen/padding_primary"

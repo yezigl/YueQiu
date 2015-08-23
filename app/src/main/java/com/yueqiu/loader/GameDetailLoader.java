@@ -8,6 +8,7 @@ import com.yueqiu.model.Representation;
 import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.HttpUtils;
 import com.yueqiu.utils.JsonUtils;
+import com.yueqiu.utils.Logger;
 import com.yueqiu.widget.BaseAsyncTaskLoader;
 
 import java.util.Locale;
@@ -37,6 +38,7 @@ public class GameDetailLoader extends BaseAsyncTaskLoader<Game> {
     @Override
     public Game loadInBackground() {
         String ret = HttpUtils.get(getTokenUrl(String.format(Locale.CHINA, urlBase, activityId)));
+        Logger.debug(ret);
         Representation<Game> rep = JsonUtils.fromJson(ret, new TypeToken<Representation<Game>>() {
         }.getType());
         return getData(rep);

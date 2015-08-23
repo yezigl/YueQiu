@@ -12,6 +12,7 @@ import com.yueqiu.model.Representation;
 import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.HttpUtils;
 import com.yueqiu.utils.JsonUtils;
+import com.yueqiu.utils.Utils;
 import com.yueqiu.widget.BaseAsyncTaskLoader;
 
 import java.util.Map;
@@ -42,7 +43,7 @@ public class RegisterLoader extends BaseAsyncTaskLoader<Login> {
     public Login loadInBackground() {
         Map<String, Object> params = getParams();
         params.put("mobile", mobile);
-        params.put("password", password);
+        params.put("password", Utils.sha1Hex(password));
         params.put("captcha", captcha);
         String ret = HttpUtils.post(Constants.API_HOST + "/1/register", params);
         Representation<Login> rep = JsonUtils.fromJson(ret, new TypeToken<Representation<Login>>() {

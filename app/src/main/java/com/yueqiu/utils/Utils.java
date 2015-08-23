@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Pattern;
 
 /**
@@ -53,4 +55,25 @@ public class Utils {
         }
         return CAPTCHA_PATTERN.matcher(captcha).find();
     }
+
+    public static String sha1Hex(String s) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA1");
+            byte[] bytes = md.digest(s.getBytes());
+            StringBuilder builder = new StringBuilder();
+            for (byte b : bytes) {
+                builder.append(Integer.toString((b & 0xFF) + 0x100, 16).substring(1));
+            }
+
+            return builder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static int getDimen(Context context, int resId) {
+        return context.getResources().getDimensionPixelSize(resId);
+    }
+
 }

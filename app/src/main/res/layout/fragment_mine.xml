@@ -7,12 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        style="@style/TitleBar">
 
         <TextView
             android:id="@+id/location"
@@ -20,99 +15,96 @@
 
         <TextView
             style="@style/TitleBarTitle"
-            android:text="@string/payment_title" />
+            android:text="@string/mine_title" />
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/layout_user"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:background="@color/bg_white">
-
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_primary"
-            android:contentDescription="@string/app_name" />
-
-        <TextView
-            android:id="@+id/nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/avatar"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/more"
-            style="@style/MoreItemArrow"
-            android:layout_marginRight="@dimen/padding_primary"
-            android:contentDescription="@string/app_name" />
-
-    </RelativeLayout>
-
-    <com.yueqiu.widget.IcsLinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:background="@color/bg_white"
-        android:divider="@drawable/line_divider"
-        android:orientation="vertical"
-        android:showDividers="beginning|middle|end">
+        android:scrollbars="none">
 
-        <com.yueqiu.widget.SettingView
-            android:id="@+id/order"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:text="@string/mine_order" />
+            android:orientation="vertical">
 
-        <com.yueqiu.widget.SettingView
-            android:id="@+id/coupon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/mine_coupon" />
+            <RelativeLayout
+                android:id="@+id/layout_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_theme"
+                android:padding="@dimen/padding_primary">
 
-        <com.yueqiu.widget.SettingView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/mine_message" />
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name" />
 
-    </com.yueqiu.widget.IcsLinearLayout>
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/avatar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/padding_base"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/text_16sp" />
 
-    <com.yueqiu.widget.IcsLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:background="@color/bg_white"
-        android:divider="@drawable/line_divider"
-        android:orientation="vertical"
-        android:showDividers="beginning|middle|end">
+            </RelativeLayout>
 
-        <com.yueqiu.widget.SettingView
-            android:id="@+id/suggest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/mine_suggest" />
+            <com.yueqiu.widget.IcsLinearLayout
+                style="@style/IcsStyle"
+                android:layout_marginTop="@dimen/vertical_margin">
 
-        <com.yueqiu.widget.SettingView
-            android:id="@+id/about"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/mine_about" />
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_order" />
 
-    </com.yueqiu.widget.IcsLinearLayout>
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_coupon" />
 
-    <Button
-        android:id="@+id/order_pay"
-        style="@style/Button.Large.Orange"
-        android:layout_marginLeft="@dimen/padding_primary"
-        android:layout_marginRight="@dimen/padding_primary"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:text="@string/payment_confirm" />
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_message" />
+
+            </com.yueqiu.widget.IcsLinearLayout>
+
+            <com.yueqiu.widget.IcsLinearLayout
+                style="@style/IcsStyle"
+                android:layout_marginTop="@dimen/vertical_margin">
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_feedback" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_share" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_about" />
+
+            </com.yueqiu.widget.IcsLinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

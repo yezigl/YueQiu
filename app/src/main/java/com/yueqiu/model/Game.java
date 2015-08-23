@@ -4,6 +4,7 @@
  */
 package com.yueqiu.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  * @version 1.0
  * @since 4.1
  */
-public class Game {
+public class Game implements Serializable {
 
     public static final int DATE_TYPE_ALL = 0;
     public static final int DATE_TYPE_TODAY = 1;
@@ -33,7 +34,7 @@ public class Game {
     private List<User> players;
     private int status;
     private String statusStr;
-    private String orderId;
+    private Order order;
 
     public String getId() {
         return id;
@@ -51,11 +52,11 @@ public class Game {
         this.title = title;
     }
 
-    public Integer getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -75,35 +76,35 @@ public class Game {
         this.date = date;
     }
 
-    public Float getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public Float getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(Float value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
-    public Integer getTotal() {
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 
-    public Integer getAttend() {
+    public int getAttend() {
         return attend;
     }
 
-    public void setAttend(Integer attend) {
+    public void setAttend(int attend) {
         this.attend = attend;
     }
 
@@ -123,26 +124,6 @@ public class Game {
         this.players = players;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public void setValue(float value) {
-        this.value = value;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public void setAttend(int attend) {
-        this.attend = attend;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -159,11 +140,11 @@ public class Game {
         this.statusStr = statusStr;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

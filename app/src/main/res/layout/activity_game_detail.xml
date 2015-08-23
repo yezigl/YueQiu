@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -22,6 +21,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/titlebar"
+        android:layout_marginBottom="@dimen/vertical_56dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -36,14 +37,11 @@
                 android:flipInterval="5000"
                 android:inAnimation="@anim/slide_in"
                 android:outAnimation="@anim/slide_out"
+                android:duplicateParentState="true"
                 android:persistentDrawingCache="animation" />
 
             <com.yueqiu.widget.IcsLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/line_divider"
-                android:orientation="vertical"
-                android:showDividers="beginning|middle|end">
+                style="@style/IcsStyle">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -58,7 +56,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/padding_base"
-                        android:contentDescription="@string/app_name" />
+                        android:contentDescription="@string/app_name"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/title"
@@ -69,17 +68,17 @@
                         android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:drawableTop="@android:drawable/ic_menu_share"
-                        android:gravity="center"
-                        android:text="分享"
-                        android:textColor="@color/text_lighter"
-                        android:textSize="@dimen/text_12sp" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/share"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:drawableTop="@android:drawable/ic_menu_share"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="分享"-->
+                    <!--android:textColor="@color/text_lighter"-->
+                    <!--android:textSize="@dimen/text_12sp" />-->
 
                 </RelativeLayout>
 
@@ -163,7 +162,8 @@
         android:id="@+id/layout_signup"
         android:layout_width="match_parent"
         android:layout_height="@dimen/vertical_56dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_white">
 
         <TextView
             android:id="@+id/price"

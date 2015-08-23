@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/TitleBarLeft" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/mine_title" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_theme"
+                android:padding="@dimen/padding_primary">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/avatar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/padding_base"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/text_16sp" />
+
+            </RelativeLayout>
+
+            <com.yueqiu.widget.IcsLinearLayout
+                style="@style/IcsStyle"
+                android:layout_marginTop="@dimen/vertical_margin">
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_order" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_coupon" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_message" />
+
+            </com.yueqiu.widget.IcsLinearLayout>
+
+            <com.yueqiu.widget.IcsLinearLayout
+                style="@style/IcsStyle"
+                android:layout_marginTop="@dimen/vertical_margin">
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_feedback" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_share" />
+
+                <com.yueqiu.widget.SettingView
+                    android:id="@+id/about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@string/mine_about" />
+
+            </com.yueqiu.widget.IcsLinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

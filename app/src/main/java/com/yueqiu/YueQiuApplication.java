@@ -27,7 +27,7 @@ public class YueQiuApplication extends Application {
 
         hanlder = new AppHanlder(this);
 
-        AnalyticsConfig.setAppkey("556d610c67e58eef5a0014aa");
+        AnalyticsConfig.setAppkey(getString(R.string.umeng_appkey));
         AnalyticsConfig.setChannel(ChannelReader.getChannel(this));
     }
 }

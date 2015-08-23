@@ -3,6 +3,7 @@
  */
 package com.yueqiu.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,9 @@ import java.util.List;
  * @author yezi
  * @since 2015年6月14日
  */
-public class Stadium {
+public class Stadium implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
     private String thumbnail;

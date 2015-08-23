@@ -31,7 +31,8 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 //    CaptchaTimer mTimer;
     long timeRemain;
     String mobile, password;
-    Class<?> targetActivity;
+    Intent targetIntent;
+    int targetRequestCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,8 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 
         Intent intent = getIntent();
         if (intent != null) {
-            targetActivity = (Class<?>) intent.getSerializableExtra(Constants.INTENT_TARGET_ACTIVITY);
+            targetIntent = intent.getParcelableExtra(Constants.INTENT_TARGET_INTENT);
+            targetRequestCode = intent.getIntExtra(Constants.INTENT_REQUESTCODE, 0);
         }
     }
 
@@ -79,12 +81,13 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 
     @OnClick(R.id.button_login)
     public void login(View v) {
+        mobile = mMobile.getText().toString();
         password = mPassword.getText().toString();
 //        if (!Utils.isCaptcha(password)) {
 //            showToast(R.string.login_captcha_error);
 //            return;
 //        }
-        getLoaderManager().initLoader(hashCode() + 1, null, this);
+        getLoaderManager().restartLoader(hashCode() + 1, null, this);
     }
 
     @OnClick(R.id.button_register)
@@ -104,8 +107,13 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
         if (data != null && data.isSuccess()) {
             data.save(this);
             finish();
-        } else {
-            showToast(data != null ? data.getMsg() : "登录失败");
+            if (targetIntent != null) {
+                if (targetRequestCode != 0) {
+                    startActivityForResult(targetIntent, targetRequestCode);
+                } else {
+                    startActivity(targetIntent);
+                }
+            }
         }
     }
 

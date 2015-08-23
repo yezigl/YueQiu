@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vertical_48dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="使用摄像头拍照"
+        android:textColor="@color/text_theme"
+        android:textSize="@dimen/text_16sp" />
+
+    <View style="@style/Divider.Horizontal" />
+
+    <TextView
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vertical_48dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="从手机相册选择"
+        android:textColor="@color/text_theme"
+        android:textSize="@dimen/text_16sp" />
+
+</LinearLayout>

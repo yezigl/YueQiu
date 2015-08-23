@@ -18,7 +18,8 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_base"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/title"
@@ -88,6 +89,7 @@
                 android:layout_marginTop="@dimen/padding_primary"
                 android:drawableLeft="@drawable/ic_location_gray"
                 android:drawablePadding="@dimen/padding_base"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_14sp" />
 
@@ -99,11 +101,12 @@
                 android:layout_marginTop="@dimen/padding_base"
                 android:drawableLeft="@drawable/ic_cale"
                 android:drawablePadding="@dimen/padding_base"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_14sp" />
 
             <TextView
-                android:id="@+id/partner"
+                android:id="@+id/player"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
@@ -111,23 +114,33 @@
                 android:layout_marginTop="@dimen/padding_base"
                 android:drawableLeft="@drawable/ic_rule"
                 android:drawablePadding="@dimen/padding_base"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_14sp" />
 
             <View
                 android:id="@+id/divider"
                 style="@style/Divider.Horizontal"
-                android:layout_below="@id/partner"
+                android:layout_below="@id/player"
                 android:layout_marginRight="@dimen/padding_primary" />
 
-            <LinearLayout
-                android:id="@+id/layout_partner"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vertical_48dp"
                 android:layout_below="@id/divider"
-                android:orientation="horizontal">
+                android:scrollbars="none">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layout_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:divider="@drawable/divider_transparent"
+                    android:orientation="horizontal"
+                    android:showDividers="beginning|middle|end">
+
+                </LinearLayout>
+            </ScrollView>
 
             <TextView
                 android:id="@+id/price"
@@ -137,7 +150,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/padding_primary"
                 android:textColor="@color/text_orange"
-                android:textSize="@dimen/text_16sp" />
+                android:textSize="@dimen/text_20sp" />
 
         </RelativeLayout>
 

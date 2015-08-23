@@ -4,24 +4,26 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.message.PushAgent;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
 import com.yueqiu.index.GameListFragment;
 import com.yueqiu.mine.MineFragment;
-import com.yueqiu.widget.BottomTabView;
-
-import butterknife.InjectView;
-import butterknife.OnClick;
+import com.yueqiu.utils.ChannelReader;
+import com.yueqiu.utils.Logger;
 
 public class MainActivity extends BaseActivity {
 
-    @InjectView(R.id.tab1)
-    BottomTabView mTab1;
-    @InjectView(R.id.tab2)
-    BottomTabView mTab2;
-    @InjectView(R.id.tab3)
-    BottomTabView mTab3;
+//    @InjectView(R.id.tab1)
+//    BottomTabView mTab1;
+//    @InjectView(R.id.tab2)
+//    BottomTabView mTab2;
+//    @InjectView(R.id.tab3)
+//    BottomTabView mTab3;
 
     private View mCurrentTab;
 
@@ -30,17 +32,19 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        if (savedInstanceState != null) {
+//            showFragment(savedInstanceState.getString(CURRENT_TAB_TAG), true);
+//            currentTag = savedInstanceState.getString(CURRENT_TAB_TAG);
+//        } else {
+//            showFragment(TAG_01, false);
+//            currentTag = TAG_01;
+//        }
+//        mCurrentTab = currentTag.equals(TAG_01) ? mTab1 : (currentTag.equals(TAG_02) ? mTab2 : mTab3);
+//        mCurrentTab.setSelected(true);
 
-        if (savedInstanceState != null) {
-            showFragment(savedInstanceState.getString(CURRENT_TAB_TAG), true);
-            currentTag = savedInstanceState.getString(CURRENT_TAB_TAG);
-        } else {
-            showFragment(TAG_01, false);
-            currentTag = TAG_01;
-        }
-        mCurrentTab = currentTag.equals(TAG_01) ? mTab1 : (currentTag.equals(TAG_02) ? mTab2 : mTab3);
-        mCurrentTab.setSelected(true);
+        showGameList();
+
+        setUpUmeng();
     }
 
     @Override
@@ -49,28 +53,54 @@ public class MainActivity extends BaseActivity {
         outState.putString(CURRENT_TAB_TAG, currentTag);
     }
 
-    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3})
-    public void tabClick(View v) {
-        if (v == mCurrentTab) {
-            return;
-        }
-        if (mCurrentTab != null) {
-            mCurrentTab.setSelected(false);
-        }
-        mCurrentTab = v;
-        mCurrentTab.setSelected(true);
-        switch (v.getId()) {
-            case R.id.tab1:
-                showFragment(TAG_01, false);
-                break;
-            case R.id.tab2:
-                showFragment(TAG_02, false);
-                break;
-            case R.id.tab3:
-                showFragment(TAG_03, false);
-                break;
-        }
+    private void showGameList() {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment fragment = GameListFragment.newInstance();
+        ft.add(R.id.content, fragment, TAG_01);
+        ft.commitAllowingStateLoss();
     }
+
+    private void setUpUmeng() {
+        PushAgent mPushAgent = PushAgent.getInstance(this);
+        mPushAgent.enable();
+        mPushAgent.setMessageChannel(ChannelReader.getChannel(this));
+
+        FeedbackAgent agent = new FeedbackAgent(this);
+        agent.openFeedbackPush();
+
+        UmengUpdateAgent.update(this);
+
+        UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+            @Override
+            public void onUpdateReturned(int i, UpdateResponse updateResponse) {
+                Logger.debug("Update", updateResponse.path, updateResponse.toString());
+            }
+        });
+    }
+
+//    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3})
+//    public void tabClick(View v) {
+//        if (v == mCurrentTab) {
+//            return;
+//        }
+//        if (mCurrentTab != null) {
+//            mCurrentTab.setSelected(false);
+//        }
+//        mCurrentTab = v;
+//        mCurrentTab.setSelected(true);
+//        switch (v.getId()) {
+//            case R.id.tab1:
+//                showFragment(TAG_01, false);
+//                break;
+//            case R.id.tab2:
+//                showFragment(TAG_02, false);
+//                break;
+//            case R.id.tab3:
+//                showFragment(TAG_03, false);
+//                break;
+//        }
+//    }
 
     private String currentTag;
     private Fragment currentFragment;

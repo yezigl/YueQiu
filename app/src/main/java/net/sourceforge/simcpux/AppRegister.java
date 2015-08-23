@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.yueqiu.utils.Constants;
 
 public class AppRegister extends BroadcastReceiver {
 
@@ -13,6 +14,6 @@ public class AppRegister extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		final IWXAPI api = WXAPIFactory.createWXAPI(context, null);
 
-		api.registerApp(Constants.APP_ID);
+		api.registerApp(Constants.WX_APP_ID);
 	}
 }

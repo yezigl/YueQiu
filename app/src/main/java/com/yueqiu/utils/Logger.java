@@ -13,11 +13,18 @@ public class Logger {
 
     private static final String DEFAULT_TAG = "YueQiuTag";
 
-    public static void debug(String tag, Object... objects) {
+    public static void debug(Object... objects) {
+        StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
+        String clazz = ste.getClassName();
+        String method = ste.getMethodName();
         StringBuilder builder = new StringBuilder();
-        for (Object object : objects) {
-            builder.append(object).append("#");
+        builder.append(clazz).append(".").append(method).append(" ");
+        for (int i = 0; i < objects.length; i++) {
+            if (i != 0) {
+                builder.append("#");
+            }
+            builder.append(objects[i]);
         }
-        Log.d(tag, builder.toString());
+        Log.d(DEFAULT_TAG, builder.toString());
     }
 }

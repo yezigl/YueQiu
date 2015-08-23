@@ -6,6 +6,7 @@ package com.yueqiu;
 
 import android.app.LoaderManager;
 import android.content.Loader;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -41,7 +42,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
 
     protected String TAG = getClass().getSimpleName();
 
-    protected final int LIST_LOADER_ID = hashCode();
+    protected final int LIST_LOADER_ID = 1000;
 
     @InjectView(R.id.list)
     ListView mListView;
@@ -96,7 +97,17 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
             }
         });
 
-        getLoaderManager().initLoader(LIST_LOADER_ID, null, this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLoaderManager().restartLoader(LIST_LOADER_ID, null, this);
+    }
+
+    protected void setDivider(Drawable drawable, int height) {
+        mListView.setDivider(drawable);
+        mListView.setDividerHeight(height);
     }
 
     @Override

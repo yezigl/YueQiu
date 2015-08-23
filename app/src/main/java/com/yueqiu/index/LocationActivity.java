@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -23,7 +22,7 @@ import com.joanzapata.android.iconify.Iconify;
 import com.yueqiu.BaseActivity;
 import com.yueqiu.R;
 import com.yueqiu.utils.Constants;
-import com.yueqiu.utils.Utils;
+import com.yueqiu.utils.Logger;
 import com.yueqiu.widget.BaseArrayAdapter;
 
 import java.util.ArrayList;
@@ -78,7 +77,7 @@ public class LocationActivity extends BaseActivity {
                 if (aMapLocation != null && aMapLocation.getAMapException().getErrorCode() == 0) {
                     mGps.clearAnimation();
                     mGps.setText(aMapLocation.getCity());
-                    Log.d(TAG, aMapLocation.getCity() + " " + aMapLocation.getProvider());
+                    Logger.debug(aMapLocation.getLatitude(), aMapLocation.getLongitude());
                 }
             }
 
@@ -111,8 +110,7 @@ public class LocationActivity extends BaseActivity {
 
     private void initServCity() {
         List<String> list = new ArrayList<String>();
-        list.add("北京");
-        list.add("上海");
+        list.add("北京市");
         mAdapter.load(list);
     }
 
@@ -149,7 +147,7 @@ public class LocationActivity extends BaseActivity {
                     Intent intent = new Intent();
                     intent.putExtra(Constants.INTENT_LOCATION_CITY, cityStr);
                     setResult(RESULT_OK, intent);
-                    Utils.finish(LocationActivity.this, 300);
+                    finish();
                 }
             });
 

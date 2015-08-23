@@ -1,7 +1,10 @@
 <resources>
 
     <string name="app_name">约个球</string>
-    <string name="channel">default</string>
+
+    <string name="umeng_appkey">559fd71067e58e4c2d00053f</string>
+    <string name="umeng_channel">umeng</string>
+    <string name="umeng_message_secret">ae3360e4ba54ce2688010c74698488c8</string>
 
     <!-- 登录注册 -->
     <string name="login_title">登录</string>
@@ -35,13 +38,18 @@
     <string name="location_servcity">已开通服务城市</string>
     <string name="location_checked">{fa-check}</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_test">TestActivity</string>
-
     <string name="game_detail_title">活动详情</string>
     <string name="game_signup">立即报名</string>
     <string name="game_signed">已报名</string>
+    <string name="map_title">查看地图</string>
+
+    <string name="order_title">提交订单</string>
+    <string name="order_confirm">提交订单</string>
+    <string name="order_label_number">人数:</string>
+    <string name="order_label_total">小计:</string>
+    <string name="order_label_coupon">优惠券:</string>
+    <string name="order_coupon">使用优惠券</string>
+    <string name="order_label_amount">订单总价:</string>
 
     <string name="payment_title">支付订单</string>
     <string name="payment_checked">{fa-check}</string>
@@ -50,19 +58,47 @@
     <string name="payment_confirm">确认支付</string>
     <string name="payment_result_title">支付结果</string>
 
+    <string name="mine_title">我的</string>
     <string name="mine_order">我的订单</string>
-    <string name="mine_coupon">优惠券</string>
-    <string name="mine_message">消息</string>
-    <string name="mine_suggest">提建议</string>
-    <string name="mine_about">关于</string>
+    <string name="mine_coupon">我的优惠券</string>
+    <string name="mine_message">我的消息</string>
+    <string name="mine_feedback">意见反馈</string>
+    <string name="mine_share">邀请好友使用</string>
+    <string name="mine_about">关于我们</string>
+    <string name="mine_logout">退出登录</string>
 
+    <string name="userinfo_title">我的信息</string>
     <string name="userinfo_avatar">头像</string>
     <string name="userinfo_nickname">昵称</string>
     <string name="userinfo_mobile">手机</string>
     <string name="userinfo_modifypwd">修改密码</string>
+    <string name="userinfo_modify">提交</string>
+
+    <string name="resetpwd_title">修改密码</string>
+    <string name="resetpwd_origin">原密码</string>
+    <string name="resetpwd_new">新密码</string>
+    <string name="resetpwd_confirm">确认新密码</string>
+    <string name="resetpwd_submit">提交</string>
+
+    <string name="myorder_list_title">我的订单</string>
+    <string name="myorder_title">订单详情</string>
+    <string name="myorder_gotopay">去支付</string>
+
+    <string name="coupon_title">我的优惠券</string>
+
+    <string name="message_title">消息通知</string>
+    <string name="feedback_title">意见反馈</string>
+
+    <string name="share_title">邀请朋友</string>
+    <string name="share_weixin">微信</string>
+    <string name="share_weixinfriends">微信朋友圈</string>
+
+    <string name="about_title">关于我们</string>
 
     <string name="load_reload">加载失败，点击重新加载</string>
     <string name="load_norecord">暂无记录</string>
+
+    <string name="me">我</string>
 
     <string name="unifiedorder_v3_wx">APP支付生成预支付订单</string>
     <string name="pay__pre_by_wxap">生成APP微信支付参数</string>

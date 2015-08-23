@@ -58,6 +58,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:clickable="true"
+                android:paddingBottom="@dimen/padding_base"
+                android:paddingRight="@dimen/padding_primary"
+                android:paddingTop="@dimen/padding_base"
                 android:text="@string/login_register"
                 android:textColor="@color/text_theme"
                 android:textSize="14sp" />
@@ -67,6 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:paddingBottom="@dimen/padding_base"
+                android:paddingLeft="@dimen/padding_primary"
+                android:paddingTop="@dimen/padding_base"
                 android:text="@string/login_resetpwd"
                 android:textColor="@color/text_theme"
                 android:textSize="14sp" />

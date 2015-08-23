@@ -7,12 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        style="@style/TitleBar">
 
         <TextView
             android:id="@+id/location"
@@ -21,6 +16,11 @@
         <TextView
             style="@style/TitleBarTitle"
             android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/me"
+            style="@style/TitleBarRight"
+            android:text="@string/me"/>
 
     </RelativeLayout>
 
@@ -38,7 +38,6 @@
     <View style="@style/Divider.Horizontal" />
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -50,6 +49,7 @@
             <ListView
                 android:id="@+id/list"
                 style="@style/List"
+                android:divider="@null"
                 android:dividerHeight="@dimen/padding_base" />
         </android.support.v4.widget.SwipeRefreshLayout>
 

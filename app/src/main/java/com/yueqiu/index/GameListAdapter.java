@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.yueqiu.R;
 import com.yueqiu.model.Game;
+import com.yueqiu.model.User;
 import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.ImageViewLoader;
+import com.yueqiu.utils.Utils;
 import com.yueqiu.widget.BaseArrayAdapter;
 
 import java.util.List;
@@ -47,12 +49,12 @@ public class GameListAdapter extends BaseArrayAdapter<Game> {
         }
 
         final Game ab = getItem(position);
-        ImageViewLoader.with(getContext(), holder.icon).load(ab.getStadium().getThumbnail());
+        //ImageViewLoader.with(getContext(), holder.icon).load(ab.getStadium().getThumbnail());
         ImageViewLoader.with(getContext(), holder.image).load(ab.getStadium().getThumbnail());
         holder.title.setText(ab.getTitle());
         holder.address.setText(ab.getStadium().getName());
         holder.date.setText(ab.getDate());
-        holder.partner.setText(ab.getTotal() + "/" + ab.getAttend());
+        holder.player.setText(ab.getTotal() + "/" + ab.getAttend());
         holder.price.setText("￥" + ab.getPrice());
         holder.status.setText(ab.getStatusStr());
         switch (ab.getStatus()) {
@@ -77,6 +79,19 @@ public class GameListAdapter extends BaseArrayAdapter<Game> {
                 getContext().startActivity(intent);
             }
         });
+        if (ab.getPlayers() != null && !ab.getPlayers().isEmpty()) {
+            int iconSize = Utils.getDimen(getContext(), R.dimen.player_icon_size);
+            holder.layoutPlayer.removeAllViews();
+            for (User user : ab.getPlayers()) {
+                ImageView view = new ImageView(getContext());
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(iconSize, iconSize);
+                view.setLayoutParams(params);
+                ImageViewLoader.with(getContext(), view).round(iconSize / 2).load(user.getAvatar());
+                holder.layoutPlayer.addView(view);
+            }
+        } else {
+
+        }
 
         return convertView;
     }
@@ -96,12 +111,12 @@ public class GameListAdapter extends BaseArrayAdapter<Game> {
         TextView address;
         @InjectView(R.id.date)
         TextView date;
-        @InjectView(R.id.partner)
-        TextView partner;
+        @InjectView(R.id.player)
+        TextView player;
         @InjectView(R.id.price)
         TextView price;
-        @InjectView(R.id.layout_partner)
-        LinearLayout layoutPartner;
+        @InjectView(R.id.layout_player)
+        LinearLayout layoutPlayer;
         @InjectView(R.id.image)
         ImageView image;
         @InjectView(R.id.status)

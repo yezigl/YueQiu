@@ -3,13 +3,17 @@
  */
 package com.yueqiu.model;
 
+import java.io.Serializable;
+
 /**
  * description here
  *
  * @author yezi
  * @since 2014年11月7日
  */
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String id;
     private String mobile;

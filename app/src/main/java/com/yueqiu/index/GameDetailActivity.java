@@ -12,13 +12,10 @@ import android.widget.ViewFlipper;
 import com.yueqiu.BaseActivity;
 import com.yueqiu.R;
 import com.yueqiu.loader.GameDetailLoader;
-import com.yueqiu.loader.OrderLoader;
 import com.yueqiu.model.Game;
 import com.yueqiu.model.Order;
 import com.yueqiu.utils.Constants;
 import com.yueqiu.utils.ImageViewLoader;
-import com.yueqiu.utils.Logger;
-import com.yueqiu.utils.StringUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -61,8 +58,11 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
     String attendPattern = "限报%s人 已报%s人";
     String rulePattern = "%s人制";
 
+    Game game;
+    Order order;
     String activityId;
-    boolean isOrder;
+    double latitude;
+    double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,7 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
     @Override
     public void onLoadFinished(Loader<Game> loader, Game data) {
         if (data != null) {
+            game = data;
             List<String> gallery = data.getStadium().getGallery();
             for (String imgUrl : gallery) {
                 ImageView imageView = new ImageView(this);
@@ -95,15 +96,21 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
             }
             mTitle.setText(data.getTitle());
             mAddress.setText(data.getStadium().getName());
+            latitude = data.getStadium().getLatitude();
+            longitude = data.getStadium().getLongitude();
             mDate.setText(data.getDate());
             mRule.setText(String.format(Locale.CHINA, rulePattern, data.getStadium().getSize()));
             mOrganizer.setText(data.getOrganizer().getNickname() + " " + data.getOrganizer().getMobile());
             mPlayer.setText(String.format(Locale.CHINA, attendPattern, data.getTotal(), data.getAttend()));
             mPrice.setText("￥" + data.getPrice());
-            if (StringUtils.isNotBlank(data.getOrderId())) {
-                isOrder = true;
-                mSigned.setVisibility(View.VISIBLE);
-                mSignup.setText("查看二维码");
+            order = data.getOrder();
+            if (order != null) {
+                if (order.getStatus() == 1) {
+                    mSignup.setText("去支付");
+                } else if (order.getStatus() == 2) {
+                    mSigned.setVisibility(View.VISIBLE);
+                    mSignup.setText("查看二维码");
+                }
             }
         }
     }
@@ -115,45 +122,28 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
 
     @OnClick(R.id.gotomap)
     public void gotomap(View v) {
-
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra(Constants.INTENT_LATITUDE, 36.2333232);
+        intent.putExtra(Constants.INTENT_LONGITUDE, 118.123144124);
+        startActivity(intent);
     }
 
     @OnClick(R.id.signup)
     public void signup(View v) {
-        if (isOrder) {
+        int orderStatus = order != null ? order.getStatus() : 0;
+        if (orderStatus == 1) {
+            Intent intent = new Intent(this, PaymentActivity.class);
+            intent.putExtra(Constants.INTENT_ORDER, order);
+            intent.putExtra(Constants.INTENT_TITLE, game.getTitle());
+            startActivity(intent);
+        } else if (orderStatus == 2) {
 
         } else {
-//            new AsyncTask<Void, Void, Order>() {
-//
-//                @Override
-//                protected Order doInBackground(Void... params) {
-//                    return null;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(Order order) {
-//                }
-//            }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-            getLoaderManager().restartLoader(hashCode() + 1, null, new LoaderManager.LoaderCallbacks<Order>() {
-                @Override
-                public Loader<Order> onCreateLoader(int id, Bundle args) {
-                    return new OrderLoader(GameDetailActivity.this).params(activityId);
-                }
-
-                @Override
-                public void onLoadFinished(Loader<Order> loader, Order data) {
-                    Logger.debug("Loader", data);
-                    if (data != null) {
-                        Intent intent = new Intent(GameDetailActivity.this, PaymentActivity.class);
-                        startActivity(intent);
-                    }
-                }
-
-                @Override
-                public void onLoaderReset(Loader<Order> loader) {
-                    loader.stopLoading();
-                }
-            });
+            Intent intent = new Intent(GameDetailActivity.this, OrderActivity.class);
+            intent.putExtra(Constants.INTENT_ACTIVITY_ID, game.getId());
+            intent.putExtra(Constants.INTENT_TITLE, game.getTitle());
+            intent.putExtra(Constants.INTENT_PRICE, game.getPrice());
+            startActivity(intent);
         }
     }
 }

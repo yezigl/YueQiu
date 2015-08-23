@@ -6,10 +6,14 @@ package com.yueqiu;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.yueqiu.model.Login;
+import com.yueqiu.utils.Constants;
 
 import butterknife.ButterKnife;
 
@@ -47,6 +51,27 @@ public class BaseFragment extends Fragment {
             } catch (IllegalArgumentException e) {
                 Log.e("ProgressDialog", e.getMessage());
             }
+        }
+    }
+
+    protected void startLoginActivity(Intent intent) {
+        if (Login.isLogin(getActivity())) {
+            startActivity(intent);
+        } else {
+            Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
+            loginIntent.putExtra(Constants.INTENT_TARGET_INTENT, intent);
+            startActivity(loginIntent);
+        }
+    }
+
+    protected void startLoginActivityForResult(Intent intent, int requestCode) {
+        if (Login.isLogin(getActivity())) {
+            startActivityForResult(intent, requestCode);
+        } else {
+            Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
+            loginIntent.putExtra(Constants.INTENT_TARGET_INTENT, intent);
+            loginIntent.putExtra(Constants.INTENT_REQUESTCODE, requestCode);
+            startActivity(loginIntent);
         }
     }
 }

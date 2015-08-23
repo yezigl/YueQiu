@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/order_title" />
+    </RelativeLayout>
+
+    <com.yueqiu.widget.IcsLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:background="@color/bg_white"
+        android:divider="@drawable/line_divider"
+        android:orientation="vertical"
+        android:showDividers="beginning|middle|end">
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/OrderLabel" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/label_number"
+                style="@style/OrderLabel"
+                android:text="@string/order_label_number" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/button_decrease"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_square"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_add" />
+
+                <EditText
+                    android:id="@+id/number"
+                    android:layout_width="40dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="@dimen/padding_base"
+                    android:layout_marginRight="@dimen/padding_base"
+                    android:background="@drawable/bg_order_number"
+                    android:gravity="center"
+                    android:editable="false"
+                    android:text="1"
+                    android:textColor="@color/text_primary" />
+
+                <ImageView
+                    android:id="@+id/button_increase"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_square"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_reduce" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/label_total"
+                style="@style/OrderLabel"
+                android:text="@string/order_label_total" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_orange"
+                android:textSize="@dimen/text_14sp" />
+        </RelativeLayout>
+    </com.yueqiu.widget.IcsLinearLayout>
+
+    <com.yueqiu.widget.IcsLinearLayout
+        style="@style/IcsStyle"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/label_coupon"
+                style="@style/OrderLabel"
+                android:text="@string/order_label_coupon" />
+
+            <TextView
+                android:id="@+id/coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/padding_base"
+                android:drawableRight="@drawable/ic_global_arrow_right"
+                android:text="@string/order_coupon"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/FormGroup">
+
+            <TextView
+                android:id="@+id/label_amount"
+                style="@style/OrderLabel"
+                android:text="@string/order_label_amount" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_orange"
+                android:textSize="@dimen/text_14sp" />
+        </RelativeLayout>
+    </com.yueqiu.widget.IcsLinearLayout>
+
+    <Button
+        android:id="@+id/button_payment"
+        style="@style/Button.Large.Orange"
+        android:layout_marginLeft="@dimen/padding_primary"
+        android:layout_marginRight="@dimen/padding_primary"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:text="@string/order_confirm" />
+
+</LinearLayout>

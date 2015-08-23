@@ -78,7 +78,7 @@ public final class ChannelReader {
             channel = getMETAInfo(context, KEY_CHANNEL);
         }
         if (channel == null) {
-            channel = context.getString(R.string.channel);
+            channel = context.getString(R.string.umeng_channel);
         }
         return channel;
     }
