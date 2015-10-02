@@ -20,7 +20,7 @@
         android:background="@drawable/bg_index_tab"
         android:orientation="horizontal">
 
-        <com.yueqiu.widget.BottomTabView
+        <com.yidongle.yueqiu.widget.BottomTabView
             android:id="@+id/tab1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:src="@drawable/m_tab_workbench"
             android:text="约球" />
 
-        <com.yueqiu.widget.BottomTabView
+        <com.yidongle.yueqiu.widget.BottomTabView
             android:id="@+id/tab2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
             android:src="@drawable/m_tab_workbench"
             android:text="活动" />
 
-        <com.yueqiu.widget.BottomTabView
+        <com.yidongle.yueqiu.widget.BottomTabView
             android:id="@+id/tab3"
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -79,7 +79,7 @@
 }
 
 # keep model
--keep class com.yueqiu.model.** { *; }
+-keep class com.yidongle.yueqiu.model.** { *; }
 
 # gson
 -keep class sun.misc.Unsafe { *; }

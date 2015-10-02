@@ -22,7 +22,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.yueqiu"
+        applicationId "com.yidongle.yueqiu"
         minSdkVersion 15
         targetSdkVersion 19
         versionCode 1

@@ -21,8 +21,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/padding_base"
+        android:background="@color/bg_white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_time_remain"
+            android:textColor="@color/text_lighter"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/time_remain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_orange"
+            android:textSize="@dimen/text_14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginTop="@dimen/padding_base"
         android:background="@color/bg_white"
         android:orientation="vertical"
         android:paddingLeft="@dimen/padding_primary">
@@ -44,9 +68,24 @@
             android:textSize="@dimen/text_16sp" />
     </LinearLayout>
 
-    <com.yueqiu.widget.IcsLinearLayout
+    <com.yidongle.yueqiu.widget.IcsLinearLayout
         style="@style/IcsStyle"
         android:layout_marginTop="@dimen/vertical_margin">
+
+        <RelativeLayout
+            android:id="@+id/layout_weixin"
+            style="@style/FormGroup.Click">
+
+            <TextView
+                style="@style/FormControl"
+                android:text="@string/payment_weixin" />
+
+            <TextView
+                android:id="@+id/weixin_checked"
+                style="@style/FormControlRight.Checked"
+                android:text="@string/payment_checked"
+                android:visibility="visible" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layout_alipay"
@@ -63,25 +102,11 @@
             <TextView
                 android:id="@+id/alipay_checked"
                 style="@style/FormControlRight.Checked"
-                android:text="@string/payment_checked" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_weixin"
-            style="@style/FormGroup.Click">
-
-            <TextView
-                style="@style/FormControl"
-                android:text="@string/payment_weixin" />
-
-            <TextView
-                android:id="@+id/weixin_checked"
-                style="@style/FormControlRight.Checked"
                 android:text="@string/payment_checked"
                 android:visibility="invisible" />
         </RelativeLayout>
 
-    </com.yueqiu.widget.IcsLinearLayout>
+    </com.yidongle.yueqiu.widget.IcsLinearLayout>
 
     <Button
         android:id="@+id/button_payment"

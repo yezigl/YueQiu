@@ -53,7 +53,7 @@
                 android:dividerHeight="@dimen/padding_base" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <com.yueqiu.widget.LoadView
+        <com.yidongle.yueqiu.widget.LoadView
             android:id="@+id/load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -18,7 +18,7 @@
             android:text="@string/order_title" />
     </RelativeLayout>
 
-    <com.yueqiu.widget.IcsLinearLayout
+    <com.yidongle.yueqiu.widget.IcsLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/vertical_margin"
@@ -107,9 +107,9 @@
                 android:textColor="@color/text_orange"
                 android:textSize="@dimen/text_14sp" />
         </RelativeLayout>
-    </com.yueqiu.widget.IcsLinearLayout>
+    </com.yidongle.yueqiu.widget.IcsLinearLayout>
 
-    <com.yueqiu.widget.IcsLinearLayout
+    <com.yidongle.yueqiu.widget.IcsLinearLayout
         style="@style/IcsStyle"
         android:layout_marginTop="@dimen/vertical_margin"
         android:orientation="vertical">
@@ -150,7 +150,7 @@
                 android:textColor="@color/text_orange"
                 android:textSize="@dimen/text_14sp" />
         </RelativeLayout>
-    </com.yueqiu.widget.IcsLinearLayout>
+    </com.yidongle.yueqiu.widget.IcsLinearLayout>
 
     <Button
         android:id="@+id/button_payment"

@@ -40,7 +40,7 @@
                 android:duplicateParentState="true"
                 android:persistentDrawingCache="animation" />
 
-            <com.yueqiu.widget.IcsLinearLayout
+            <com.yidongle.yueqiu.widget.IcsLinearLayout
                 style="@style/IcsStyle">
 
                 <RelativeLayout
@@ -154,7 +154,7 @@
                     <!--android:visibility="gone" />-->
 
                 </RelativeLayout>
-            </com.yueqiu.widget.IcsLinearLayout>
+            </com.yidongle.yueqiu.widget.IcsLinearLayout>
         </LinearLayout>
     </ScrollView>
 

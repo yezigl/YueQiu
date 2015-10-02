@@ -18,95 +18,152 @@
             android:text="@string/myorder_title" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/title"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/layout_swiperefresh"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vertical_48dp"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:background="@color/bg_white"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/padding_primary"
-        android:textColor="@color/text_primary"
-        android:textSize="@dimen/text_16sp" />
+        android:layout_height="match_parent">
 
-    <com.yueqiu.widget.IcsLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:background="@color/bg_white"
-        android:divider="@drawable/line_divider"
-        android:orientation="vertical"
-        android:showDividers="beginning|middle|end">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
-        <RelativeLayout style="@style/FormGroup">
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_14sp" />
-        </RelativeLayout>
+                android:orientation="vertical">
 
-        <RelativeLayout style="@style/FormGroup">
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/vertical_48dp"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:background="@color/bg_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/padding_primary"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_16sp" />
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_14sp" />
-        </RelativeLayout>
+                <com.yidongle.yueqiu.widget.IcsLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:background="@color/bg_white"
+                    android:divider="@drawable/line_divider"
+                    android:orientation="vertical"
+                    android:showDividers="beginning|middle|end">
 
-        <RelativeLayout style="@style/FormGroup">
+                    <RelativeLayout style="@style/FormGroup">
 
-            <TextView
-                android:id="@+id/rule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_14sp" />
-        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
 
-    </com.yueqiu.widget.IcsLinearLayout>
+                    <RelativeLayout style="@style/FormGroup">
 
-    <com.yueqiu.widget.IcsLinearLayout
-        style="@style/IcsStyle"
-        android:layout_marginTop="@dimen/vertical_margin">
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
 
-        <RelativeLayout style="@style/FormGroup">
+                    <RelativeLayout style="@style/FormGroup">
 
-            <TextView
-                android:id="@+id/order_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_14sp" />
-        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/rule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
 
-        <RelativeLayout style="@style/FormGroup">
+                </com.yidongle.yueqiu.widget.IcsLinearLayout>
 
-            <TextView
-                android:id="@+id/order_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_14sp" />
-        </RelativeLayout>
-    </com.yueqiu.widget.IcsLinearLayout>
+                <com.yidongle.yueqiu.widget.IcsLinearLayout
+                    style="@style/IcsStyle"
+                    android:layout_marginTop="@dimen/vertical_margin">
 
-    <Button
-        android:id="@+id/button_payment"
-        style="@style/Button.Large.Orange"
-        android:layout_marginLeft="@dimen/padding_primary"
-        android:layout_marginRight="@dimen/padding_primary"
-        android:layout_marginTop="@dimen/vertical_margin"
-        android:text="@string/myorder_gotopay"
-        android:visibility="gone" />
+                    <RelativeLayout style="@style/FormGroup">
+
+                        <TextView
+                            android:id="@+id/order_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/FormGroup">
+
+                        <TextView
+                            android:id="@+id/order_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_order_paytime"
+                        style="@style/FormGroup"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/order_paytime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_order_paytype"
+                        style="@style/FormGroup"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/order_paytype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_14sp" />
+                    </RelativeLayout>
+                </com.yidongle.yueqiu.widget.IcsLinearLayout>
+
+                <Button
+                    android:id="@+id/button_payment"
+                    style="@style/Button.Large.Orange"
+                    android:layout_marginLeft="@dimen/padding_primary"
+                    android:layout_marginRight="@dimen/padding_primary"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/myorder_gotopay"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/button_signin"
+                    style="@style/Button.Large.Orange"
+                    android:layout_marginLeft="@dimen/padding_primary"
+                    android:layout_marginRight="@dimen/padding_primary"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/myorder_signin"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

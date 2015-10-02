@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.yueqiu.utils.Constants;
+import com.yidongle.yueqiu.utils.Constants;
 
 public class AppRegister extends BroadcastReceiver {
 

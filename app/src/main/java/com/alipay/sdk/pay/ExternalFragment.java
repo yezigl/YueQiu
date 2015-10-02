@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yueqiu.R;
+import com.yidongle.yueqiu.R;
 
 public class ExternalFragment extends Fragment {
 

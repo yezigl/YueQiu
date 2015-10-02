@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.yueqiu.BaseActivity;
-import com.yueqiu.R;
+import com.yidongle.yueqiu.R;
+import com.yidongle.yueqiu.BaseActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

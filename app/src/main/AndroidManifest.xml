@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.yueqiu"
+    package="com.yidongle.yueqiu"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -59,15 +59,15 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".index.LocationActivity"
+            android:name=".play.LocationActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".index.GameDetailActivity"
+            android:name=".play.GameDetailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".index.PaymentActivity"
+            android:name=".play.PaymentActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -103,11 +103,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".index.MapActivity"
+            android:name=".play.MapActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".index.OrderActivity"
+            android:name=".play.OrderActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -139,27 +139,10 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
-        <activity
-            android:name="com.alipay.sdk.auth.AuthActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind">
-        </activity>
         <!-- alipay sdk end -->
         <!-- weixin pay begin -->
         <activity
-            android:name="com.weixin.pay.PayActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="wxf2f565574a968187" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.weixin.pay.wxapi.WXPayEntryActivity"
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop" />
 
@@ -221,7 +204,7 @@
             android:name="com.umeng.message.RegistrationReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.yueqiu.intent.action.COMMAND" />
+                <action android:name="com.yidongle.yueqiu.intent.action.COMMAND" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.umeng.message.UmengMessageBootReceiver">
@@ -236,10 +219,10 @@
             android:label="PushService"
             android:process=":push">
             <intent-filter>
-                <action android:name="com.yueqiu.intent.action.START" />
+                <action android:name="com.yidongle.yueqiu.intent.action.START" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.yueqiu.intent.action.COCKROACH" />
+                <action android:name="com.yidongle.yueqiu.intent.action.COCKROACH" />
             </intent-filter>
             <intent-filter>
                 <action android:name="org.agoo.android.intent.action.PING_V4" />

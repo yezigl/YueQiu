@@ -57,6 +57,9 @@
     <string name="payment_weixin">微信支付</string>
     <string name="payment_confirm">确认支付</string>
     <string name="payment_result_title">支付结果</string>
+    <string name="payment_success">支付成功</string>
+    <string name="payment_fail">支付失败</string>
+    <string name="payment_time_remain">支付剩余时间: </string>
 
     <string name="mine_title">我的</string>
     <string name="mine_order">我的订单</string>
@@ -83,6 +86,7 @@
     <string name="myorder_list_title">我的订单</string>
     <string name="myorder_title">订单详情</string>
     <string name="myorder_gotopay">去支付</string>
+    <string name="myorder_signin">签到</string>
 
     <string name="coupon_title">我的优惠券</string>
 

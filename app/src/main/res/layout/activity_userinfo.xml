@@ -51,7 +51,7 @@
 
     </RelativeLayout>
 
-    <com.yueqiu.widget.IcsLinearLayout
+    <com.yidongle.yueqiu.widget.IcsLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/vertical_margin"
@@ -60,25 +60,25 @@
         android:orientation="vertical"
         android:showDividers="beginning|middle|end">
 
-        <com.yueqiu.widget.SettingView
+        <com.yidongle.yueqiu.widget.SettingView
             android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:text="@string/userinfo_nickname" />
 
-        <com.yueqiu.widget.SettingView
+        <com.yidongle.yueqiu.widget.SettingView
             android:id="@+id/mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:text="@string/userinfo_mobile" />
 
-        <com.yueqiu.widget.SettingView
+        <com.yidongle.yueqiu.widget.SettingView
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:text="@string/userinfo_modifypwd" />
 
-    </com.yueqiu.widget.IcsLinearLayout>
+    </com.yidongle.yueqiu.widget.IcsLinearLayout>
 
     <Button
         android:id="@+id/button_logout"
