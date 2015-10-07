@@ -1,4 +1,4 @@
-package com.yidongle.yueqiu.play;
+package com.yidongle.yueqiu.order;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,6 +17,7 @@ import com.yidongle.yueqiu.model.Game;
 import com.yidongle.yueqiu.model.Login;
 import com.yidongle.yueqiu.model.Order;
 import com.yidongle.yueqiu.model.Representation;
+import com.yidongle.yueqiu.pay.PaymentActivity;
 import com.yidongle.yueqiu.utils.API;
 import com.yidongle.yueqiu.utils.Constants;
 import com.yidongle.yueqiu.utils.HttpUtils;

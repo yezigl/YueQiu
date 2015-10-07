@@ -93,7 +93,7 @@ public class Login extends Res {
         editor.apply();
     }
 
-    public void logout(Context context) {
+    public static void logout(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();

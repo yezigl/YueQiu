@@ -11,6 +11,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.yidongle.yueqiu.BaseActivity;
 import com.yidongle.yueqiu.R;
 import com.yidongle.yueqiu.utils.Constants;
+import com.yidongle.yueqiu.utils.Logger;
 
 /**
  * Created on 15/6/16.
@@ -31,8 +32,8 @@ public class MapActivity extends BaseActivity {
         setContentView(R.layout.activity_map);
 
         Intent intent = getIntent();
-        double latitude = intent.getDoubleExtra(Constants.INTENT_LATITUDE, 0);
-        double longitude = intent.getDoubleExtra(Constants.INTENT_LONGITUDE, 0);
+        float latitude = intent.getFloatExtra(Constants.INTENT_LATITUDE, 0);
+        float longitude = intent.getFloatExtra(Constants.INTENT_LONGITUDE, 0);
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
@@ -40,6 +41,7 @@ public class MapActivity extends BaseActivity {
         init();
 
         LatLng ll = new LatLng(latitude, longitude);
+        Logger.debug(ll);
         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 17));
         aMap.addMarker(new MarkerOptions().position(ll));
     }

@@ -1,4 +1,4 @@
-package com.yidongle.yueqiu.play;
+package com.yidongle.yueqiu.pay;
 
 import android.os.Bundle;
 

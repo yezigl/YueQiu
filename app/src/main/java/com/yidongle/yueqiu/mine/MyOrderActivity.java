@@ -18,7 +18,7 @@ import com.yidongle.yueqiu.loader.OrderDetailLoader;
 import com.yidongle.yueqiu.model.Order;
 import com.yidongle.yueqiu.model.Representation;
 import com.yidongle.yueqiu.model.Signin;
-import com.yidongle.yueqiu.play.PaymentActivity;
+import com.yidongle.yueqiu.pay.PaymentActivity;
 import com.yidongle.yueqiu.utils.API;
 import com.yidongle.yueqiu.utils.Constants;
 import com.yidongle.yueqiu.utils.HttpUtils;
@@ -100,12 +100,8 @@ public class MyOrderActivity extends BaseActivity implements LoaderManager.Loade
 
     @Override
     public void back(View v) {
-        if (fromPay) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-            super.back(v);
-        }
+        Intent intent = new Intent(this, MyOrderListActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -130,8 +126,8 @@ public class MyOrderActivity extends BaseActivity implements LoaderManager.Loade
             if (data.isPayed()) {
                 mLayoutPayTime.setVisibility(View.VISIBLE);
                 mLayoutPayType.setVisibility(View.VISIBLE);
-                mPayTime.setText("支付时间: " +data.getPayTime());
-                mPayType.setText("支付方式: " +data.getPayTypeCN());
+                mPayTime.setText("支付时间: " + data.getPayTime());
+                mPayType.setText("支付方式: " + data.getPayTypeCN());
             }
             if (data.isCreated()) {
                 mPayment.setVisibility(View.VISIBLE);

@@ -5,6 +5,7 @@
     <string name="umeng_appkey">559fd71067e58e4c2d00053f</string>
     <string name="umeng_channel">umeng</string>
     <string name="umeng_message_secret">ae3360e4ba54ce2688010c74698488c8</string>
+    <string name="amap_appkey">1bbf1b34b37252a1cf546555aff00c28</string>
 
     <!-- 登录注册 -->
     <string name="login_title">登录</string>
@@ -42,6 +43,11 @@
     <string name="game_signup">立即报名</string>
     <string name="game_signed">已报名</string>
     <string name="map_title">查看地图</string>
+    <string name="game_organizer" formatted="false">%s %s</string>
+    <string name="game_player" formatted="false">限报%s人 已报%s人</string>
+    <string name="game_rule" formatted="false">%s人制</string>
+    <string name="price_yuan" formatted="false">%s元</string>
+    <string name="price_rmb" formatted="false">￥%s</string>
 
     <string name="order_title">提交订单</string>
     <string name="order_confirm">提交订单</string>
@@ -59,7 +65,10 @@
     <string name="payment_result_title">支付结果</string>
     <string name="payment_success">支付成功</string>
     <string name="payment_fail">支付失败</string>
-    <string name="payment_time_remain">支付剩余时间: </string>
+    <string name="payment_time_remain1">支付剩余时间:&#160;</string>
+    <string name="payment_time_remain2" fromated="false">%s:%s</string>
+    <string name="payment_order_title" fromated="false">订单名称:&#160;%s</string>
+    <string name="payment_order_price" fromated="false">订单价格:&#160;%s元</string>
 
     <string name="mine_title">我的</string>
     <string name="mine_order">我的订单</string>

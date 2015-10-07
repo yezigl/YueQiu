@@ -4,8 +4,10 @@ import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -14,11 +16,14 @@ import com.yidongle.yueqiu.R;
 import com.yidongle.yueqiu.loader.GameDetailLoader;
 import com.yidongle.yueqiu.model.Game;
 import com.yidongle.yueqiu.model.Order;
+import com.yidongle.yueqiu.model.User;
+import com.yidongle.yueqiu.order.OrderActivity;
+import com.yidongle.yueqiu.pay.PaymentActivity;
 import com.yidongle.yueqiu.utils.Constants;
 import com.yidongle.yueqiu.utils.ImageViewLoader;
+import com.yidongle.yueqiu.utils.Utils;
 
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -54,15 +59,12 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
     TextView mSigned;
     @InjectView(R.id.price)
     TextView mPrice;
-
-    String attendPattern = "限报%s人 已报%s人";
-    String rulePattern = "%s人制";
+    @InjectView(R.id.layout_player)
+    LinearLayout mLayoutPlayer;
 
     Game game;
     Order order;
     String activityId;
-    double latitude;
-    double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +98,24 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
             }
             mTitle.setText(data.getTitle());
             mAddress.setText(data.getStadium().getName());
-            latitude = data.getStadium().getLatitude();
-            longitude = data.getStadium().getLongitude();
             mDate.setText(data.getDate());
-            mRule.setText(String.format(Locale.CHINA, rulePattern, data.getStadium().getSize()));
-            mOrganizer.setText(data.getOrganizer().getNickname() + " " + data.getOrganizer().getMobile());
-            mPlayer.setText(String.format(Locale.CHINA, attendPattern, data.getTotal(), data.getAttend()));
-            mPrice.setText("￥" + data.getPrice());
+            mRule.setText(getString(R.string.game_rule, data.getStadium().getSize()));
+            mOrganizer.setText(getString(R.string.game_organizer, data.getOrganizer().getNickname(), data.getOrganizer().getMobile()));
+            mPlayer.setText(getString(R.string.game_player, data.getTotal(), data.getAttend()));
+            mPrice.setText(getString(R.string.price_rmb, data.getPrice()));
+            List<User> players = data.getPlayers();
+            if (players != null) {
+                for (User user : players) {
+                    int iconSize = Utils.getDimen(this, R.dimen.player_icon_size);
+                    View view = LayoutInflater.from(this).inflate(R.layout.activity_game_detail_player, mLayoutPlayer, false);
+                    ImageView avatar = (ImageView) view.findViewById(R.id.avatar);
+                    TextView nickname = (TextView) view.findViewById(R.id.nickname);
+                    TextView quantity = (TextView) view.findViewById(R.id.quantity);
+                    ImageViewLoader.with(this, avatar).round(iconSize / 2).load(user.getAvatar());
+                    nickname.setText(user.getNickname());
+                    mLayoutPlayer.addView(view);
+                }
+            }
             order = data.getOrder();
             if (order != null) {
                 if (order.isCreated()) {

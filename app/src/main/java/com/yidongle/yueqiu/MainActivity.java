@@ -62,15 +62,18 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setUpUmeng() {
+        // 推送
         PushAgent mPushAgent = PushAgent.getInstance(this);
         mPushAgent.enable();
         mPushAgent.setMessageChannel(ChannelReader.getChannel(this));
 
+        // 反馈
         FeedbackAgent agent = new FeedbackAgent(this);
         agent.openFeedbackPush();
 
+        // 更新
         UmengUpdateAgent.update(this);
-
+        UmengUpdateAgent.setChannel(ChannelReader.getChannel(this));
         UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
             @Override
             public void onUpdateReturned(int i, UpdateResponse updateResponse) {

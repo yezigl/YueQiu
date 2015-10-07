@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.yidongle.yueqiu.R;
 import com.yidongle.yueqiu.loader.CaptchaLoader;
 import com.yidongle.yueqiu.loader.RegisterLoader;
 import com.yidongle.yueqiu.model.Captcha;
@@ -107,7 +106,8 @@ public class RegisterActivity extends BaseActivity implements LoaderManager.Load
             @Override
             public void onLoadFinished(Loader<Captcha> loader, Captcha data) {
                 hideProgressDialog();
-                if (data != null && data.isResult()) {
+                if (data != null) {
+                    mCaptcha.setText(data.getCaptcha());
                     showToast("发送成功");
                 }
             }

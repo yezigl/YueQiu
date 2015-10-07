@@ -28,7 +28,8 @@ public enum API {
     ORDER(Constants.API_HOST + "/v1/orders", false),
     SIGN_IN(Constants.API_HOST + "/v1/orders/%s/signin", true),
     RESETPWD(Constants.API_HOST + "/v1/resetpwd", false),
-    UPLOAD_AVATAR(Constants.API_HOST + "/v1/upload/avatar", false);
+    UPLOAD_AVATAR(Constants.API_HOST + "/v1/upload/avatar", false),
+    WX_UNIFIEDORDER(Constants.API_HOST + "/v1/payment/weixin/unifiedorder", false);
 
     private String url;
     private boolean format;

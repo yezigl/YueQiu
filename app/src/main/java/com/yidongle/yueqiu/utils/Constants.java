@@ -9,15 +9,11 @@ package com.yidongle.yueqiu.utils;
  */
 public class Constants {
 
-    public static final String IS_FIRST_RUN = "first_run_";
-
     public static final String UMENG_APPKEY = "54e5cfbcfd98c585cb000554";
 
     public static final String WX_APP_ID = "wx6e7743c505a4881b";
 
     public static final String WX_MCH_ID = "1272650001";
-
-    public static final String WX_PARNTER_ID = WX_MCH_ID;
 
     public static final String ALIPAY_APP_ID = "2015092300320037";
 
@@ -29,7 +25,7 @@ public class Constants {
 
     public static final String ALIPAY_SIGN_TYPE = "RSA";
 
-    public static final String ALIPAY_SELLER_ID = "";
+    public static final String ALIPAY_SELLER_ID = ALIPAY_PARNTER_ID;
 
     public static final String ALIPAY_PAYMENT_TYPE = "1";
 
@@ -53,7 +49,7 @@ public class Constants {
                     "M6VXa1gT5zZZaoM=";
 
     //支付宝公钥
-    public static final String ALIPAY_RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB";
+    public static final String ALIPAY_RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
 
     public static final String API_HOST = "http://api.yueqiua.com";
 

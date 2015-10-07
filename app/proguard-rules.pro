@@ -84,11 +84,6 @@
 # gson
 -keep class sun.misc.Unsafe { *; }
 
-# umeng
--keepclassmembers class * {
-   public <init>(org.json.JSONObject);
-}
-
 # butterknife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
@@ -131,32 +126,36 @@
 -dontwarn java.nio.**
 
 # umeng
+-keepclassmembers class * {
+   public <init>(org.json.JSONObject);
+}
+
 -keep class com.umeng.message.* {
-    public <fields>;
-    public <methods>;
+        public <fields>;
+        public <methods>;
 }
 
 -keep class com.umeng.message.protobuffer.* {
-	public <fields>;
-    public <methods>;
+        public <fields>;
+        public <methods>;
 }
 
 -keep class com.squareup.wire.* {
-	public <fields>;
-    public <methods>;
+        public <fields>;
+        public <methods>;
 }
 
+-keep class com.umeng.message.local.* {
+        public <fields>;
+        public <methods>;
+}
 -keep class org.android.agoo.impl.*{
-	public <fields>;
-    public <methods>;
+        public <fields>;
+        public <methods>;
 }
 
 -keep class org.android.agoo.service.* {*;}
 
 -keep class org.android.spdy.**{*;}
-
--keep public class com.umeng.message.example.R$*{
-   public static final int *;
-}
 
 -dontwarn com.ta.utdid2.**,com.umeng.message.**

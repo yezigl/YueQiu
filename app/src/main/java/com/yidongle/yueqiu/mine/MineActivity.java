@@ -12,6 +12,7 @@ import com.umeng.fb.FeedbackAgent;
 import com.umeng.fb.fragment.FeedbackFragment;
 import com.yidongle.yueqiu.BaseActivity;
 import com.yidongle.yueqiu.LoginActivity;
+import com.yidongle.yueqiu.MainActivity;
 import com.yidongle.yueqiu.R;
 import com.yidongle.yueqiu.loader.UserInfoLoader;
 import com.yidongle.yueqiu.model.Login;
@@ -54,6 +55,12 @@ public class MineActivity extends BaseActivity implements LoaderManager.LoaderCa
         } else {
             mNickname.setText("点击登录");
         }
+    }
+
+    @Override
+    public void back(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

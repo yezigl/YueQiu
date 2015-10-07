@@ -1,9 +1,5 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    maven { url "https://raw.githubusercontent.com/umeng/mvn-repo-umeng/master/repository" }
-}
-
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -28,6 +24,7 @@ android {
         versionCode 1
         versionName "1.0"
         signingConfig signingConfigs.release
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
     }
 
     buildTypes {
@@ -40,6 +37,40 @@ android {
     lintOptions {
         abortOnError false
     }
+
+//    productFlavors {
+//        defaultFlavor {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+//        }
+//        xiaomi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+//        }
+//        qihoo {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihoo"]
+//        }
+//        baidu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+//        }
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//        }
+//        qq {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qq"]
+//        }
+//    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
 }
 
 dependencies {
@@ -49,12 +80,8 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.google.zxing:core:3.1.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.joanzapata.android:android-iconify:1.0.8'
-    compile ('com.umeng:fb:5.3.0') {
-        exclude group: 'com.umeng', module: 'message'
-    }
 }

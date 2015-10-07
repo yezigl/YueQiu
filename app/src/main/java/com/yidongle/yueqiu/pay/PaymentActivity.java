@@ -1,8 +1,10 @@
-package com.yidongle.yueqiu.play;
+package com.yidongle.yueqiu.pay;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,11 +19,13 @@ import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.yidongle.yueqiu.BaseActivity;
 import com.yidongle.yueqiu.R;
+import com.yidongle.yueqiu.mine.MyOrderActivity;
 import com.yidongle.yueqiu.model.Order;
 import com.yidongle.yueqiu.model.PayType;
 import com.yidongle.yueqiu.model.Representation;
 import com.yidongle.yueqiu.model.WeixinPrePay;
 import com.yidongle.yueqiu.time.NTP;
+import com.yidongle.yueqiu.utils.API;
 import com.yidongle.yueqiu.utils.Constants;
 import com.yidongle.yueqiu.utils.DateUtils;
 import com.yidongle.yueqiu.utils.HttpUtils;
@@ -76,9 +80,9 @@ public class PaymentActivity extends BaseActivity {
 
         order = (Order) getIntent().getSerializableExtra(Constants.INTENT_ORDER);
 
-        mTitle.setText("订单名称:  " + order.getActivity().getTitle());
-        mAmount.setText("订单价格:  " + order.getAmount() + "元");
-        mTimeRemain.setText("00:00");
+        mTitle.setText(getString(R.string.payment_order_title, order.getActivity().getTitle()));
+        mAmount.setText(getString(R.string.payment_order_price, order.getAmount()));
+        mTimeRemain.setText(getString(R.string.payment_time_remain2, "00", "00"));
 
         remainTime = Constants.PAY_EXIRE_TIME - NTP.currentTimeMillis()
                 + DateUtils.parse(order.getCreateTime(), DateUtils.F_DATE_TIME).getTime();
@@ -109,7 +113,7 @@ public class PaymentActivity extends BaseActivity {
         public void onTick(long millisUntilFinished) {
             long minute = millisUntilFinished / 1000 / 60;
             long second = (millisUntilFinished - minute * 60 * 1000) / 1000;
-            mTimeRemain.setText((minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second));
+            mTimeRemain.setText(getString(R.string.payment_time_remain2, (minute < 10 ? "0" + minute : minute), (second < 10 ? "0" + second : second)));
         }
     }
 
@@ -141,10 +145,9 @@ public class PaymentActivity extends BaseActivity {
 
             @Override
             protected Representation<WeixinPrePay> doInBackground(Void... params) {
-                String url = "http://api.yueqiua.com/v1/payment/weixin/unifiedorder";
-                Map<String, Object> map = new HashMap<String, Object>();
+                Map<String, Object> map = new HashMap<>();
                 map.put("orderId", order.getId());
-                String ret = HttpUtils.post(url, map);
+                String ret = HttpUtils.post(API.WX_UNIFIEDORDER.url(), map);
                 return JsonUtils.fromJson(ret, new TypeToken<Representation<WeixinPrePay>>() {
                 }.getType());
             }
@@ -172,6 +175,9 @@ public class PaymentActivity extends BaseActivity {
         }.execute();
     }
 
+    /**
+     * 6001 用户去取消
+     */
     private void alipayPay() {
         showProgressDialog("正在请求服务器...");
         new AsyncTask<Void, Void, PayResult>() {
@@ -202,15 +208,34 @@ public class PaymentActivity extends BaseActivity {
                 // 对订单做RSA 签名
                 String sign = StringUtils.encodeURL(SignUtils.sign(orderInfo, Constants.ALIPAY_RSA_PRIVATE));
                 final String payInfo = orderInfo + "&sign=" + sign + "&sign_type=RSA";
-                Logger.debug(payInfo);
                 String ret = payTask.pay(payInfo);
-                Logger.debug(ret);
                 return new PayResult(ret);
             }
 
             @Override
             protected void onPostExecute(PayResult payResult) {
                 hideProgressDialog();
+                String resultStatus = payResult.getResultStatus();
+
+                // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
+                if (TextUtils.equals(resultStatus, "9000")) {
+                    Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
+                    intent.putExtra(Constants.INTENT_ORDER_ID, mPreferences.getString(Constants.PREF_ORDERID, ""));
+                    startActivity(intent);
+                } else {
+                    // 判断resultStatus 为非“9000”则代表可能支付失败
+                    // “8000”代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
+                    if (TextUtils.equals(resultStatus, "8000")) {
+                        showToast("支付结果确认中");
+                        Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
+                        intent.putExtra(Constants.INTENT_ORDER_ID, mPreferences.getString(Constants.PREF_ORDERID, ""));
+                        startActivity(intent);
+                    } else {
+                        // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
+                        showToast("支付失败");
+
+                    }
+                }
             }
         }.execute();
 

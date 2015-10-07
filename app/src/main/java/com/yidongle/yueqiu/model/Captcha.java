@@ -13,13 +13,13 @@ package com.yidongle.yueqiu.model;
  */
 public class Captcha extends Res {
 
-    private boolean result;
+    private String captcha;
 
-    public boolean isResult() {
-        return result;
+    public String getCaptcha() {
+        return captcha;
     }
 
-    public void setResult(boolean result) {
-        this.result = result;
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
     }
 }

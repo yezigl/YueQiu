@@ -1,6 +1,7 @@
 package com.yidongle.yueqiu.mine;
 
 import android.app.LoaderManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Bitmap;
@@ -171,11 +172,19 @@ public class UserInfoActivity extends BaseActivity implements LoaderManager.Load
 
     @OnClick(R.id.button_logout)
     public void logout(View v) {
-        new Login().logout(this);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("确定退出吗？");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Login.logout(UserInfoActivity.this);
+                Intent intent = new Intent(UserInfoActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("取消", null);
     }
 
     private class UserModifyAsyncTask extends AsyncTask<Void, Void, User> {
