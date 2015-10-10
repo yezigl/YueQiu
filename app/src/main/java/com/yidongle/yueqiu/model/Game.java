@@ -34,7 +34,7 @@ public class Game implements Serializable {
     private List<User> players;
     private int status;
     private String statusStr;
-    private Order order;
+    private OrderInfo orderInfo;
 
     public String getId() {
         return id;
@@ -140,11 +140,50 @@ public class Game implements Serializable {
         this.statusStr = statusStr;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderInfo getOrderInfo() {
+        return orderInfo;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderInfo(OrderInfo orderInfo) {
+        this.orderInfo = orderInfo;
+    }
+
+    public static class OrderInfo {
+        private boolean canBuy;
+        private boolean hasBuy;
+        private boolean isPayed;
+        private String orderId;
+
+        public boolean isCanBuy() {
+            return canBuy;
+        }
+
+        public void setCanBuy(boolean canBuy) {
+            this.canBuy = canBuy;
+        }
+
+        public boolean isHasBuy() {
+            return hasBuy;
+        }
+
+        public void setHasBuy(boolean hasBuy) {
+            this.hasBuy = hasBuy;
+        }
+
+        public boolean isPayed() {
+            return isPayed;
+        }
+
+        public void setIsPayed(boolean isPayed) {
+            this.isPayed = isPayed;
+        }
+
+        public String getOrderId() {
+            return orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
     }
 }

@@ -172,17 +172,6 @@
             android:textSize="@dimen/text_16sp" />
 
         <TextView
-            android:id="@+id/signed"
-            android:layout_width="110dp"
-            android:layout_height="match_parent"
-            android:background="@color/bg_gray"
-            android:gravity="center"
-            android:text="@string/game_signed"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/text_14sp"
-            android:visibility="gone" />
-
-        <TextView
             android:id="@+id/signup"
             android:layout_width="110dp"
             android:layout_height="match_parent"

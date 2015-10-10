@@ -18,7 +18,7 @@ public enum API {
     REGISTER(Constants.API_HOST + "/v1/register", false),
     LOGIN(Constants.API_HOST + "/v1/login", false),
     CAPTCHA(Constants.API_HOST + "/v1/captcha/mobile", false),
-    GAME_DETAIL(Constants.API_HOST + "/v1/activity/%s", true),
+    GAME_DETAIL(Constants.API_HOST + "/v1/activities/%s", true),
     GAME_LIST(Constants.API_HOST + "/v1/activities", false),
     USER_MESSAGES(Constants.API_HOST + "/v1/user/messages", false),
     USER_ORDERS(Constants.API_HOST + "/v1/user/orders", false),

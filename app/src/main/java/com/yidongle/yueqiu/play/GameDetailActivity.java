@@ -14,6 +14,8 @@ import android.widget.ViewFlipper;
 import com.yidongle.yueqiu.BaseActivity;
 import com.yidongle.yueqiu.R;
 import com.yidongle.yueqiu.loader.GameDetailLoader;
+import com.yidongle.yueqiu.loader.LoaderRequest;
+import com.yidongle.yueqiu.loader.OrderDetailLoader;
 import com.yidongle.yueqiu.model.Game;
 import com.yidongle.yueqiu.model.Order;
 import com.yidongle.yueqiu.model.User;
@@ -55,15 +57,12 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
     TextView mPlayer;
     @InjectView(R.id.signup)
     TextView mSignup;
-    @InjectView(R.id.signed)
-    TextView mSigned;
     @InjectView(R.id.price)
     TextView mPrice;
     @InjectView(R.id.layout_player)
     LinearLayout mLayoutPlayer;
 
     Game game;
-    Order order;
     String activityId;
 
     @Override
@@ -116,18 +115,11 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
                     mLayoutPlayer.addView(view);
                 }
             }
-            order = data.getOrder();
-            if (order != null) {
-                if (order.isCreated()) {
-                    mSignup.setText("去支付");
-                } else if (order.isPayed()) {
-                    mSigned.setVisibility(View.VISIBLE);
-                    mSignup.setVisibility(View.GONE);
-                } else if (order.isSignin()) {
-                    mSigned.setVisibility(View.VISIBLE);
-                    mSigned.setText("已签到");
-                    mSignup.setVisibility(View.GONE);
-                }
+            mSignup.setEnabled(game.getOrderInfo().isCanBuy());
+            if (game.getOrderInfo().isPayed()) {
+                mSignup.setText("已购买");
+            } else if (game.getOrderInfo().isHasBuy()) {
+                mSignup.setText("去支付");
             }
         }
     }
@@ -147,18 +139,25 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
 
     @OnClick(R.id.signup)
     public void signup(View v) {
-        if (order == null) {
-            order = new Order();
-        }
-        if (order.isCreated()) {
-            Intent intent = new Intent(this, PaymentActivity.class);
-            intent.putExtra(Constants.INTENT_ORDER, order);
-            intent.putExtra(Constants.INTENT_ACTIVITY, game);
-            startActivity(intent);
-        } else if (order.isPayed()) {
+        if (game.getOrderInfo().isHasBuy() && !game.getOrderInfo().isPayed()) {
+            new LoaderRequest<Order>(this) {
+                @Override
+                public Loader<Order> onCreateLoader(int id, Bundle args) {
+                    return new OrderDetailLoader(getContext()).params(game.getOrderInfo().getOrderId());
+                }
 
-        } else if (order.isNew()) {
-            Intent intent = new Intent(GameDetailActivity.this, OrderActivity.class);
+                @Override
+                public void onLoadFinished(Loader<Order> loader, Order data) {
+                    if (data != null) {
+                        Intent intent = new Intent(GameDetailActivity.this, PaymentActivity.class);
+                        intent.putExtra(Constants.INTENT_ORDER, data);
+                        intent.putExtra(Constants.INTENT_ACTIVITY, game);
+                        startActivity(intent);
+                    }
+                }
+            }.request();
+        } else if (!game.getOrderInfo().isHasBuy()) {
+            Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra(Constants.INTENT_ACTIVITY, game);
             startActivity(intent);
         }
