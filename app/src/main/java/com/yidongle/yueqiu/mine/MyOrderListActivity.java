@@ -1,6 +1,5 @@
 package com.yidongle.yueqiu.mine;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -37,12 +36,6 @@ public class MyOrderListActivity extends BaseActivity {
         setContentView(R.layout.activity_myorder_list);
 
         getFragmentManager().beginTransaction().add(R.id.content, new MyOrderListFragment()).commit();
-    }
-
-    @Override
-    public void back(View v) {
-        Intent intent = new Intent(this, MineActivity.class);
-        startActivity(intent);
     }
 
     public static class MyOrderListFragment extends BaseListFragment<Order> {

@@ -220,6 +220,7 @@ public class PaymentActivity extends BaseActivity {
                 // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                 if (TextUtils.equals(resultStatus, "9000")) {
                     Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
+                    intent.putExtra(Constants.INTENT_FROMPAY, true);
                     intent.putExtra(Constants.INTENT_ORDER_ID, mPreferences.getString(Constants.PREF_ORDERID, ""));
                     startActivity(intent);
                 } else {
@@ -228,6 +229,7 @@ public class PaymentActivity extends BaseActivity {
                     if (TextUtils.equals(resultStatus, "8000")) {
                         showToast("支付结果确认中");
                         Intent intent = new Intent(PaymentActivity.this, MyOrderActivity.class);
+                        intent.putExtra(Constants.INTENT_FROMPAY, true);
                         intent.putExtra(Constants.INTENT_ORDER_ID, mPreferences.getString(Constants.PREF_ORDERID, ""));
                         startActivity(intent);
                     } else {

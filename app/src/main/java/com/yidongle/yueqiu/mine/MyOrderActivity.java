@@ -99,12 +99,6 @@ public class MyOrderActivity extends BaseActivity implements LoaderManager.Loade
     }
 
     @Override
-    public void back(View v) {
-        Intent intent = new Intent(this, MyOrderListActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
     public Loader<Order> onCreateLoader(int id, Bundle args) {
         return new OrderDetailLoader(this).params(oid);
     }

@@ -53,6 +53,11 @@ public class MainActivity extends BaseActivity {
         outState.putString(CURRENT_TAB_TAG, currentTag);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private void showGameList() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

@@ -148,7 +148,7 @@ public class Game implements Serializable {
         this.orderInfo = orderInfo;
     }
 
-    public static class OrderInfo {
+    public static class OrderInfo implements Serializable {
         private boolean canBuy;
         private boolean hasBuy;
         private boolean isPayed;

@@ -82,6 +82,7 @@ public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandl
 
     private void orderDetail() {
         Intent intent = new Intent(this, MyOrderActivity.class);
+		intent.putExtra(Constants.INTENT_FROMPAY, true);
         intent.putExtra(Constants.INTENT_ORDER_ID, mPreferences.getString(Constants.PREF_ORDERID, ""));
         startActivity(intent);
         finish();

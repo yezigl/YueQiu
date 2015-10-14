@@ -150,6 +150,7 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
                 public void onLoadFinished(Loader<Order> loader, Order data) {
                     if (data != null) {
                         Intent intent = new Intent(GameDetailActivity.this, PaymentActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         intent.putExtra(Constants.INTENT_ORDER, data);
                         intent.putExtra(Constants.INTENT_ACTIVITY, game);
                         startActivity(intent);
