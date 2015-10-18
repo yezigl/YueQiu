@@ -179,12 +179,14 @@ public class UserInfoActivity extends BaseActivity implements LoaderManager.Load
             public void onClick(DialogInterface dialog, int which) {
                 Login.logout(UserInfoActivity.this);
                 Intent intent = new Intent(UserInfoActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                 startActivity(intent);
                 finish();
             }
         });
         builder.setNegativeButton("取消", null);
+        builder.setCancelable(false);
+        builder.show();
     }
 
     private class UserModifyAsyncTask extends AsyncTask<Void, Void, User> {

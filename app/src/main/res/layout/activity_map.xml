@@ -16,7 +16,7 @@
 
         <TextView
             style="@style/TitleBarTitle"
-            android:text="@string/map_title" />
+            android:text="@string/game_map_title" />
     </RelativeLayout>
 
     <com.amap.api.maps2d.MapView

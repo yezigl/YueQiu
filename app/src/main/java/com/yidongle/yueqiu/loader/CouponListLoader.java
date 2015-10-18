@@ -19,9 +19,9 @@ import java.util.List;
  * @version 1.0
  * @since 1.0
  */
-public class CouponLoader extends BaseAsyncTaskLoader<List<Coupon>> {
+public class CouponListLoader extends BaseAsyncTaskLoader<List<Coupon>> {
 
-    public CouponLoader(Context context) {
+    public CouponListLoader(Context context) {
         super(context);
     }
 

@@ -23,6 +23,7 @@ import com.yidongle.yueqiu.order.OrderActivity;
 import com.yidongle.yueqiu.pay.PaymentActivity;
 import com.yidongle.yueqiu.utils.Constants;
 import com.yidongle.yueqiu.utils.ImageViewLoader;
+import com.yidongle.yueqiu.utils.StringUtils;
 import com.yidongle.yueqiu.utils.Utils;
 
 import java.util.List;
@@ -59,6 +60,8 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
     TextView mSignup;
     @InjectView(R.id.price)
     TextView mPrice;
+    @InjectView(R.id.description)
+    TextView mDescription;
     @InjectView(R.id.layout_player)
     LinearLayout mLayoutPlayer;
 
@@ -102,23 +105,27 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
             mOrganizer.setText(getString(R.string.game_organizer, data.getOrganizer().getNickname(), data.getOrganizer().getMobile()));
             mPlayer.setText(getString(R.string.game_player, data.getTotal(), data.getAttend()));
             mPrice.setText(getString(R.string.price_rmb, data.getPrice()));
+            if (StringUtils.isNotBlank(data.getDescription())) {
+                mDescription.setVisibility(View.VISIBLE);
+                mDescription.setText(data.getDescription());
+            }
             List<User> players = data.getPlayers();
             if (players != null) {
+                mLayoutPlayer.removeAllViews();
                 for (User user : players) {
                     int iconSize = Utils.getDimen(this, R.dimen.player_icon_size);
                     View view = LayoutInflater.from(this).inflate(R.layout.activity_game_detail_player, mLayoutPlayer, false);
                     ImageView avatar = (ImageView) view.findViewById(R.id.avatar);
                     TextView nickname = (TextView) view.findViewById(R.id.nickname);
-                    TextView quantity = (TextView) view.findViewById(R.id.quantity);
                     ImageViewLoader.with(this, avatar).round(iconSize / 2).load(user.getAvatar());
                     nickname.setText(user.getNickname());
                     mLayoutPlayer.addView(view);
                 }
             }
-            mSignup.setEnabled(game.getOrderInfo().isCanBuy());
+            mSignup.setEnabled(game.getOrderInfo().isCanOrder());
             if (game.getOrderInfo().isPayed()) {
                 mSignup.setText("已购买");
-            } else if (game.getOrderInfo().isHasBuy()) {
+            } else if (game.getOrderInfo().isHasOrder()) {
                 mSignup.setText("去支付");
             }
         }
@@ -139,11 +146,12 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
 
     @OnClick(R.id.signup)
     public void signup(View v) {
-        if (game.getOrderInfo().isHasBuy() && !game.getOrderInfo().isPayed()) {
+        final Game.OrderInfo orderInfo = game.getOrderInfo();
+        if (orderInfo.isHasOrder() && !orderInfo.isPayed()) {
             new LoaderRequest<Order>(this) {
                 @Override
                 public Loader<Order> onCreateLoader(int id, Bundle args) {
-                    return new OrderDetailLoader(getContext()).params(game.getOrderInfo().getOrderId());
+                    return new OrderDetailLoader(getContext()).params(orderInfo.getOrderId());
                 }
 
                 @Override
@@ -157,7 +165,7 @@ public class GameDetailActivity extends BaseActivity implements LoaderManager.Lo
                     }
                 }
             }.request();
-        } else if (!game.getOrderInfo().isHasBuy()) {
+        } else if (!orderInfo.isHasOrder()) {
             Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra(Constants.INTENT_ACTIVITY, game);
             startActivity(intent);

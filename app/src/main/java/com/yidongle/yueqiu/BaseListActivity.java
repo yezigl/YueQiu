@@ -1,18 +1,10 @@
-/**
- * Copyright (c) 2010-2015 meituan.com
- * All rights reserved.
- */
 package com.yidongle.yueqiu;
 
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
@@ -25,13 +17,13 @@ import java.util.List;
 import butterknife.InjectView;
 
 /**
- * TODO 在这里编写类的功能描述
+ * Created on 15/10/18.
  *
- * @author lidehua
+ * @author yezi
  * @version 1.0
- * @since 4.1
+ * @since 1.0
  */
-public abstract class BaseListFragment<T> extends BaseFragment implements LoaderManager.LoaderCallbacks<List<T>> {
+public abstract class BaseListActivity<T> extends BaseActivity implements LoaderManager.LoaderCallbacks<List<T>> {
 
     public static final int LOAD = 0;
 
@@ -39,7 +31,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
 
     public static final int MORE = 2;
 
-    protected final int LIST_LOADER_ID = 1000;
+    protected final int LIST_LOADER_ID = 1001;
 
     @InjectView(R.id.list)
     ListView mListView;
@@ -61,16 +53,9 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
         mLoad.setNoneText(resourceId);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.createView(inflater, container, R.layout.fragment_base_list);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
         mAdapter = getAdapter();
 
         mListView.setAdapter(mAdapter);
@@ -84,7 +69,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (firstVisibleItem + visibleItemCount > totalItemCount) {
                     mState = MORE;
-                    getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListFragment.this);
+                    getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListActivity.this);
                 }
             }
         });
@@ -94,10 +79,9 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
             public void onRefresh() {
                 mSwipeRefresh.setEnabled(false);
                 mState = REFRESH;
-                getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListFragment.this);
+                getLoaderManager().restartLoader(LIST_LOADER_ID, null, BaseListActivity.this);
             }
         });
-
     }
 
     @Override
@@ -114,7 +98,7 @@ public abstract class BaseListFragment<T> extends BaseFragment implements Loader
     @Override
     public Loader<List<T>> onCreateLoader(int id, Bundle args) {
         //if (mState == LOAD) {
-            mAdapter.clear();
+        mAdapter.clear();
         //}
         if (mState == LOAD || mState == REFRESH) {
             mLoad.loading(mListView);

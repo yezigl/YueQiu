@@ -27,6 +27,8 @@ public class MainActivity extends BaseActivity {
 
     private View mCurrentTab;
 
+    private long lastBackPressedMills;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +57,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (System.currentTimeMillis() - lastBackPressedMills > 3000) {
+            showToast("再按一次退出约个球");
+            lastBackPressedMills = System.currentTimeMillis();
+        } else {
+            finish();
+        }
     }
 
     private void showGameList() {

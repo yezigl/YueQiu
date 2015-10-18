@@ -17,21 +17,21 @@ android {
         }
     }
 
-    defaultConfig {
-        applicationId "com.yidongle.yueqiu"
-        minSdkVersion 15
-        targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
-        signingConfig signingConfigs.release
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
-    }
-
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    defaultConfig {
+        applicationId "com.yidongle.yueqiu"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        signingConfig signingConfigs.release
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
     }
 
     lintOptions {
@@ -73,15 +73,26 @@ android {
     }
 }
 
+def supportVersion='22.2.1'
+
+configurations {
+    all*.exclude group: 'com.google.android', module: 'support-v4'
+    all*.exclude group: 'junit', module: 'junit'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:appcompat-v7:'+supportVersion
+    compile 'com.android.support:recyclerview-v7:'+supportVersion
+    compile 'com.android.support:design:'+supportVersion
+    compile 'com.android.support:support-v4:'+supportVersion
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.google.zxing:core:3.1.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.joanzapata.android:android-iconify:1.0.8'
+    compile ('com.umeng:fb:5.4.0') {
+        exclude group: 'com.umeng', module: 'message'
+    }
 }

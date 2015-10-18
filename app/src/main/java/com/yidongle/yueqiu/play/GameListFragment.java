@@ -63,6 +63,7 @@ public class GameListFragment extends BaseListFragment<Game> {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.createView(inflater, container, R.layout.fragment_game_list);
+        setLoadNoneText(R.string.game_list_none);
         mTabLayout.addTab(getTab(DateType.ALL));
         mTabLayout.addTab(getTab(DateType.TODAY));
         mTabLayout.addTab(getTab(DateType.TOMORROW));

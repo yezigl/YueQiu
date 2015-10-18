@@ -39,6 +39,26 @@ public class ImageViewLoader implements Callback, View.OnTouchListener {
         return new ImageViewLoader(imageView, Picasso.with(context));
     }
 
+    public void load(int resourceId) {
+        ImageView imageView = imageViewRef.get();
+        if (imageView == null) {
+            return;
+        }
+        ViewGroup.LayoutParams params = imageView.getLayoutParams();
+
+        RequestCreator requestCreator = picasso.load(resourceId);
+        // 圆角
+        if (roundRadius > 0) {
+            requestCreator.transform(new RoundImage());
+        }
+        // 如果view设置了layout_width和layout_height，则使用width和height缩放
+        if (params != null && params.width > 0 && params.height > 0) {
+            requestCreator.resize(params.width, params.height);
+        }
+
+        requestCreator.into(imageView, this);
+    }
+
     public void load(String url) {
         load(url, 0);
     }

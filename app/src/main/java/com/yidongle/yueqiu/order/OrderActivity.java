@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import com.yidongle.yueqiu.BaseActivity;
 import com.yidongle.yueqiu.LoginActivity;
 import com.yidongle.yueqiu.R;
-import com.yidongle.yueqiu.mine.CouponActivity;
+import com.yidongle.yueqiu.mine.CouponListActivity;
 import com.yidongle.yueqiu.model.Coupon;
 import com.yidongle.yueqiu.model.Game;
 import com.yidongle.yueqiu.model.Login;
@@ -177,7 +177,7 @@ public class OrderActivity extends BaseActivity {
 
     @OnClick(R.id.coupon)
     public void coupon(View v) {
-        Intent intent = new Intent(this, CouponActivity.class);
+        Intent intent = new Intent(this, CouponListActivity.class);
         startLoginActivityForResult(intent, COUPON_REQCODE);
     }
 }

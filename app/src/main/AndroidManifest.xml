@@ -79,7 +79,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".mine.CouponActivity"
+            android:name=".mine.CouponListActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

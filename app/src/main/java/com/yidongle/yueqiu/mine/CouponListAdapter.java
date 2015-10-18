@@ -24,9 +24,9 @@ import butterknife.InjectView;
  * @version 1.0
  * @since 1.0
  */
-public class CouponAdapter extends BaseArrayAdapter<Coupon> {
+public class CouponListAdapter extends BaseArrayAdapter<Coupon> {
 
-    public CouponAdapter(Activity context, List<Coupon> list) {
+    public CouponListAdapter(Activity context, List<Coupon> list) {
         super(context, 0, list);
     }
 

@@ -52,6 +52,9 @@ public class MineActivity extends BaseActivity implements LoaderManager.LoaderCa
         if (Login.isLogin(this)) {
             getLoaderManager().restartLoader(hashCode(), null, this);
         } else {
+            ImageViewLoader.with(this, mAvatar)
+                    .round(Utils.getDimen(this, R.dimen.avatar_size) / 2)
+                    .load(R.drawable.ic_avatar_dft);
             mNickname.setText("点击登录");
         }
     }
@@ -97,7 +100,7 @@ public class MineActivity extends BaseActivity implements LoaderManager.LoaderCa
 
     @OnClick(R.id.coupon)
     public void coupon(View v) {
-        Intent intent = new Intent(this, CouponActivity.class);
+        Intent intent = new Intent(this, CouponListActivity.class);
         startLoginActivity(intent);
     }
 

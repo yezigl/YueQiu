@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar"
+        style="@style/TitleBar">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/TitleBarLeft"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            style="@style/TitleBarTitle"
+            android:text="@string/coupon_list_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/layout_swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/list"
+                style="@style/List"
+                android:divider="@null"
+                android:dividerHeight="@dimen/padding_base" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <com.yidongle.yueqiu.widget.LoadView
+            android:id="@+id/load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+</LinearLayout>

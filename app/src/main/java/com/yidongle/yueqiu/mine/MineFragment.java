@@ -102,7 +102,7 @@ public class MineFragment extends BaseFragment implements LoaderManager.LoaderCa
 
     @OnClick(R.id.coupon)
     public void coupon(View v) {
-        Intent intent = new Intent(getActivity(), CouponActivity.class);
+        Intent intent = new Intent(getActivity(), CouponListActivity.class);
         startLoginActivity(intent);
     }
 

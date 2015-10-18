@@ -7,6 +7,10 @@
     <string name="umeng_message_secret">ae3360e4ba54ce2688010c74698488c8</string>
     <string name="amap_appkey">1bbf1b34b37252a1cf546555aff00c28</string>
 
+    <string name="price_yuan" formatted="false">%s元</string>
+    <string name="price_rmb" formatted="false">￥%s</string>
+    <string name="me">我</string>
+
     <!-- 登录注册 -->
     <string name="login_title">登录</string>
     <string name="login_click2captcha">获取验证码</string>
@@ -42,12 +46,11 @@
     <string name="game_detail_title">活动详情</string>
     <string name="game_signup">立即报名</string>
     <string name="game_signed">已报名</string>
-    <string name="map_title">查看地图</string>
+    <string name="game_map_title">查看地图</string>
     <string name="game_organizer" formatted="false">%s %s</string>
     <string name="game_player" formatted="false">限报%s人 已报%s人</string>
     <string name="game_rule" formatted="false">%s人制</string>
-    <string name="price_yuan" formatted="false">%s元</string>
-    <string name="price_rmb" formatted="false">￥%s</string>
+    <string name="game_list_none">暂无活动</string>
 
     <string name="order_title">提交订单</string>
     <string name="order_confirm">提交订单</string>
@@ -97,7 +100,8 @@
     <string name="myorder_gotopay">去支付</string>
     <string name="myorder_signin">签到</string>
 
-    <string name="coupon_title">我的优惠券</string>
+    <string name="coupon_list_title">我的优惠券</string>
+    <string name="coupon_list_none">暂无可用优惠券</string>
 
     <string name="message_title">消息通知</string>
     <string name="feedback_title">意见反馈</string>
@@ -110,7 +114,5 @@
 
     <string name="load_reload">加载失败，点击重新加载</string>
     <string name="load_norecord">暂无记录</string>
-
-    <string name="me">我</string>
 
 </resources>
